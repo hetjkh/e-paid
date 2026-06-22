@@ -9,6 +9,7 @@ import {
   fadeUp,
   StaggerReveal,
 } from "./motion/scroll-motion";
+import SectionTitleGlow from "./SectionTitleGlow";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const testimonials = [
@@ -121,17 +122,16 @@ export default function CustomerTestimonials() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-background pb-20 pt-0 lg:pb-28 lg:pt-0">
+    <section className="relative overflow-x-clip bg-background pb-20 pt-0 lg:pb-28 lg:pt-0">
       <div className="relative mx-auto max-w-[1400px] px-6 pt-6 lg:px-10 lg:pt-8">
         <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-          <div className="relative inline-block max-w-md overflow-hidden py-4 lg:py-6">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320%] w-[280%] -translate-x-[68%] -translate-y-1/2 blur-[80px] glow-blue" />
+          <SectionTitleGlow>
             <AnimatedLines
               lines={["WHAT OUR", "CUSTOMERS SAY"]}
               as="h2"
-              className="sf-pro-display-semibold relative text-3xl font-semibold uppercase leading-tight text-epaid sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
+              className="sf-pro-display-semibold text-3xl font-semibold uppercase leading-tight text-epaid sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
             />
-          </div>
+          </SectionTitleGlow>
 
           <motion.p
             className="relative z-10 max-w-sm text-base leading-relaxed text-muted-foreground lg:pt-2 lg:text-lg"

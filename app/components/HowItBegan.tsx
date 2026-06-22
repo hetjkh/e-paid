@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import SectionTitleGlow from "./SectionTitleGlow";
 
 type TimelineEvent = {
   year: string;
@@ -247,13 +248,15 @@ export default function HowItBegan() {
   return (
     <section
       id="history"
-      className="relative overflow-hidden bg-background py-20 lg:py-28"
+      className="relative overflow-x-clip bg-background py-20 lg:py-28"
     >
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <h2 className="sf-pro-display-semibold text-2xl font-semibold uppercase leading-none tracking-normal text-foreground sm:text-4xl lg:text-[3.5rem]">
-            HOW IT BEGAN
-          </h2>
+          <SectionTitleGlow className="pb-2 lg:pb-0">
+            <h2 className="sf-pro-display-semibold text-2xl font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[3.5rem]">
+              HOW IT BEGAN
+            </h2>
+          </SectionTitleGlow>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base lg:max-w-sm lg:text-lg">
             ePaid Company is a spind off ITS Saudi Computers Systems Co. W.L.L is a
             Leading MSP, providing POS services since 1992 in the Kingdom.

@@ -11,6 +11,9 @@ import {
   StaggerReveal,
 } from "../components/motion/scroll-motion";
 
+const formFieldBorderClassName =
+  "border border-solid border-[#00000040] focus:outline-none focus:ring-2 focus:ring-epaid/30";
+
 function FieldLabel({ children }: { children: ReactNode }) {
   return (
     <span className="absolute -top-2.5 left-5 bg-card px-1 text-xs text-muted-foreground">
@@ -68,7 +71,7 @@ function FormField({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-full border border-border-soft bg-card py-3.5 pl-5 pr-11 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-epaid/30"
+        className={`w-full rounded-full bg-card py-3.5 pl-5 pr-11 text-sm text-foreground placeholder:text-muted-foreground/60 ${formFieldBorderClassName}`}
       />
       {icon && (
         <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
@@ -163,7 +166,7 @@ export default function ContactForm() {
                         type="text"
                         defaultValue="+966"
                         readOnly
-                        className="w-full rounded-full border border-border-soft bg-card py-3.5 pl-5 pr-3 text-center text-sm text-foreground focus:outline-none"
+                        className={`w-full rounded-full bg-card py-3.5 pl-5 pr-3 text-center text-sm text-foreground ${formFieldBorderClassName}`}
                       />
                     </label>
                     <FormField
@@ -189,7 +192,7 @@ export default function ContactForm() {
                       <FieldLabel>Inquiry Type (Optional)</FieldLabel>
                       <select
                         defaultValue=""
-                        className="w-full appearance-none rounded-full border border-border-soft bg-card py-3.5 pl-5 pr-11 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30"
+                        className={`w-full appearance-none rounded-full bg-card py-3.5 pl-5 pr-11 text-sm text-foreground ${formFieldBorderClassName}`}
                       >
                         <option value="" disabled>
                           Select inquiry type
@@ -235,7 +238,7 @@ export default function ContactForm() {
                     <textarea
                       rows={5}
                       placeholder="Write your message"
-                      className="w-full resize-none rounded-[28px] border border-border-soft bg-card px-5 py-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-epaid/30"
+                      className={`w-full resize-none rounded-[28px] bg-card px-5 py-4 text-sm text-foreground placeholder:text-muted-foreground/60 ${formFieldBorderClassName}`}
                     />
                   </motion.label>
 
@@ -278,50 +281,6 @@ export default function ContactForm() {
                 className="aspect-[4/3] h-auto w-full object-cover"
               />
             </div>
-
-            <StaggerReveal className="mt-8 space-y-4" stagger={0.1}>
-              <motion.div
-                variants={fadeUp}
-                transition={{ duration: 0.55, ease: easeOut }}
-                className="rounded-[20px] border border-border-soft bg-card px-6 py-5 dark:dark-card-shadow"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wide text-epaid">
-                  Average response time
-                </p>
-                <p className="mt-2 text-2xl font-bold text-foreground">Under 24 hours</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Our sales team reviews every inquiry personally.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeUp}
-                transition={{ duration: 0.55, ease: easeOut }}
-                className="rounded-[20px] border border-border-soft bg-card px-6 py-5 dark:dark-card-shadow"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wide text-epaid">
-                  Coverage
-                </p>
-                <p className="mt-2 text-2xl font-bold text-foreground">Nationwide KSA</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Installation and on-ground support across Saudi Arabia.
-                </p>
-              </motion.div>
-
-              <motion.div
-                variants={fadeUp}
-                transition={{ duration: 0.55, ease: easeOut }}
-                className="rounded-[20px] border border-border-soft bg-card px-6 py-5 dark:dark-card-shadow"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wide text-epaid">
-                  Languages supported
-                </p>
-                <p className="mt-2 text-lg font-bold text-foreground">English & Arabic</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  We support merchants in both languages end to end.
-                </p>
-              </motion.div>
-            </StaggerReveal>
           </ScrollReveal>
         </div>
       </div>

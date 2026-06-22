@@ -11,6 +11,7 @@ import {
   scaleIn,
   StaggerReveal,
 } from "./motion/scroll-motion";
+import SectionTitleGlow from "./SectionTitleGlow";
 import {
   fetchProductsClient,
   formatPrice,
@@ -80,18 +81,17 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-background pt-24 pb-20 lg:pt-32 lg:pb-28"
+      className="relative overflow-x-clip bg-background pt-24 pb-20 lg:pt-32 lg:pb-28"
     >
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-          <div className="relative inline-block max-w-md overflow-hidden py-8">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320%] w-[280%] -translate-x-[68%] -translate-y-1/2 blur-[80px] glow-blue" />
+          <SectionTitleGlow>
             <AnimatedText
               text="OUR PRODUCTS"
               as="h2"
-              className="sf-pro-display-semibold relative text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
+              className="sf-pro-display-semibold text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
             />
-          </div>
+          </SectionTitleGlow>
 
           <motion.p
             className="relative z-10 max-w-sm text-base leading-relaxed text-muted-foreground lg:pt-2 lg:text-lg"

@@ -12,6 +12,7 @@ import {
   slideFromRight,
   StaggerReveal,
 } from "./motion/scroll-motion";
+import SectionTitleGlow from "./SectionTitleGlow";
 
 const services = [
   {
@@ -52,23 +53,24 @@ function ServiceIcon() {
 
 export default function WhatWeDo() {
   return (
-    <section id="about" className="relative overflow-hidden bg-background pt-12 pb-20 lg:pt-16 lg:pb-28">
+    <section id="about" className="relative overflow-x-clip bg-background pt-12 pb-20 lg:pt-16 lg:pb-28">
       <div className="pointer-events-none absolute right-0 top-1/4 z-0 h-[300px] w-[300px] translate-x-1/4 blur-[90px] glow-blue lg:h-[380px] lg:w-[380px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
-          <ScrollReveal className="relative inline-block max-w-md overflow-hidden py-4 lg:py-6">
-            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320%] w-[280%] -translate-x-[68%] -translate-y-1/2 blur-[80px] glow-blue" />
-            <AnimatedText
-              text="About ePaid"
-              as="p"
-              className="relative mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-epaid sm:text-base lg:mb-5 lg:text-lg"
-            />
-            <AnimatedText
-              text="WHAT WE DO"
-              as="h2"
-              className="sf-pro-display-semibold relative text-4xl font-semibold uppercase leading-none tracking-normal text-epaid sm:text-5xl lg:text-[3.5rem]"
-            />
+          <ScrollReveal>
+            <SectionTitleGlow>
+              <AnimatedText
+                text="About ePaid"
+                as="p"
+                className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-epaid sm:text-base lg:mb-5 lg:text-lg"
+              />
+              <AnimatedText
+                text="WHAT WE DO"
+                as="h2"
+                className="sf-pro-display-semibold text-4xl font-semibold uppercase leading-none tracking-normal text-epaid sm:text-5xl lg:text-[3.5rem]"
+              />
+            </SectionTitleGlow>
           </ScrollReveal>
 
           <motion.p
@@ -140,7 +142,11 @@ export default function WhatWeDo() {
           </StaggerReveal>
 
           <ScrollReveal variant={slideFromRight} className="relative mx-auto w-full max-w-[580px] lg:mx-0 lg:max-w-none">
-            <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[5/6]">
+            <div
+              className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[90px] glow-blue sm:h-[340px] sm:w-[340px] lg:h-[380px] lg:w-[380px]"
+              aria-hidden="true"
+            />
+            <div className="relative z-[1] aspect-[4/5] sm:aspect-square lg:aspect-[5/6]">
               <Image
                 src="/image1.png"
                 alt="Customer making a card payment on a POS terminal"

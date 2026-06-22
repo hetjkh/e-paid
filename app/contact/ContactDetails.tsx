@@ -92,16 +92,16 @@ export default function ContactDetails() {
             <AnimatedText
               text="GET IN TOUCH"
               as="p"
-              className="relative text-sm font-semibold uppercase tracking-[0.2em] text-epaid"
+              className="sf-pro-display-semibold relative text-sm font-semibold uppercase tracking-[0.2em] text-epaid"
             />
             <AnimatedLines
               lines={["WE'RE HERE", "TO HELP"]}
               as="h2"
-              className="relative mt-3 text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-foreground sm:text-4xl lg:text-[2.75rem]"
+              className="sf-pro-display-semibold relative mt-3 text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-foreground sm:text-4xl lg:text-[2.75rem]"
             />
           </div>
           <motion.p
-            className="max-w-md text-base leading-relaxed text-muted-foreground lg:text-lg"
+            className="sf-pro-display-medium max-w-md text-base font-medium leading-relaxed text-muted-foreground lg:text-lg"
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
@@ -127,7 +127,7 @@ export default function ContactDetails() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-epaid/10 text-epaid transition-colors duration-300 group-hover:bg-epaid group-hover:text-white">
                     {channel.icon}
                   </span>
-                  <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-epaid">
+                  <p className="sf-pro-display-semibold mt-4 text-xs font-semibold uppercase tracking-wide text-epaid">
                     {channel.title}
                   </p>
                   {channel.href ? (
@@ -141,16 +141,16 @@ export default function ContactDetails() {
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="mt-2 block text-base font-bold text-foreground transition-colors hover:text-epaid lg:text-lg"
+                      className="sf-pro-display-semibold mt-2 block text-base font-semibold text-foreground transition-colors hover:text-epaid lg:text-lg"
                     >
                       {channel.value}
                     </a>
                   ) : (
-                    <p className="mt-2 text-base font-bold text-foreground lg:text-lg">
+                    <p className="sf-pro-display-semibold mt-2 text-base font-semibold text-foreground lg:text-lg">
                       {channel.value}
                     </p>
                   )}
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="sf-pro-display-medium mt-2 text-sm font-medium leading-relaxed text-muted-foreground">
                     {channel.detail}
                   </p>
                 </motion.article>
@@ -164,14 +164,14 @@ export default function ContactDetails() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.65, ease: easeOut }}
             >
-              <h3 className="text-lg font-bold text-foreground lg:text-xl">
+              <h3 className="sf-pro-display-semibold text-lg font-semibold text-foreground lg:text-xl">
                 What you can expect from our team
               </h3>
               <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {supportHighlights.map((item, index) => (
                   <motion.li
                     key={item}
-                    className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground sm:text-[15px]"
+                    className="sf-pro-display-medium flex items-start gap-3 text-sm font-medium leading-relaxed text-muted-foreground sm:text-[15px]"
                     initial={{ opacity: 0, x: -12 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
@@ -213,13 +213,13 @@ export default function ContactDetails() {
           >
             <div className="flex flex-1 flex-col overflow-hidden rounded-[24px] border border-border-soft bg-card shadow-[0_8px_32px_rgba(4,113,173,0.08)] dark:shadow-[0_8px_32px_rgba(4,113,173,0.15)]">
               <div className="border-b border-border-soft px-5 py-4 lg:px-6">
-                <p className="text-xs font-semibold uppercase tracking-wide text-epaid">
+                <p className="sf-pro-display-semibold text-xs font-semibold uppercase tracking-wide text-epaid">
                   Find us
                 </p>
-                <p className="mt-1 text-base font-bold text-foreground">
+                <p className="sf-pro-display-semibold mt-1 text-base font-semibold text-foreground">
                   King Fahd Road, Olaya District
                 </p>
-                <p className="text-sm text-muted-foreground">Riyadh, Saudi Arabia</p>
+                <p className="sf-pro-display-medium text-sm font-medium text-muted-foreground">Riyadh, Saudi Arabia</p>
               </div>
 
               <div className="relative min-h-[280px] flex-1 bg-card-muted lg:min-h-[380px]">
@@ -238,7 +238,7 @@ export default function ContactDetails() {
                   href={MAP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-epaid transition-colors hover:text-epaid-dark"
+                  className="sf-pro-display-semibold inline-flex items-center gap-2 text-sm font-semibold text-epaid transition-colors hover:text-epaid-dark"
                 >
                   Open in Google Maps
                   <svg
