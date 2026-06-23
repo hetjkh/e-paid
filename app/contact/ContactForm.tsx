@@ -14,9 +14,17 @@ import {
 const formFieldBorderClassName =
   "border border-solid border-[#00000040] focus:outline-none focus:ring-2 focus:ring-epaid/30";
 
+const formRowTwoColClassName =
+  "grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
+
+const formRowPhoneClassName =
+  "grid grid-cols-[5.5rem_minmax(0,1fr)] gap-3 min-[360px]:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1fr)] min-[480px]:gap-5";
+
+const inputClassName = `min-h-12 w-full rounded-full bg-card py-3 pl-4 pr-10 text-base text-foreground placeholder:text-muted-foreground/60 sm:py-3.5 sm:pl-5 sm:pr-11 sm:text-sm ${formFieldBorderClassName}`;
+
 function FieldLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="absolute -top-2.5 left-5 bg-card px-1 text-xs text-muted-foreground">
+    <span className="absolute -top-2.5 left-3 max-w-[calc(100%-1rem)] truncate bg-card px-1 text-[10px] text-muted-foreground sm:left-5 sm:max-w-none sm:text-xs">
       {children}
     </span>
   );
@@ -57,24 +65,26 @@ function FormField({
   type = "text",
   placeholder,
   required,
+  className,
 }: {
   label: string;
   icon?: ReactNode;
   type?: string;
   placeholder?: string;
   required?: boolean;
+  className?: string;
 }) {
   return (
-    <label className="relative block">
+    <label className={`relative block min-w-0 ${className ?? ""}`}>
       <FieldLabel>{label}</FieldLabel>
       <input
         type={type}
         required={required}
         placeholder={placeholder}
-        className={`w-full rounded-full bg-card py-3.5 pl-5 pr-11 text-sm text-foreground placeholder:text-muted-foreground/60 ${formFieldBorderClassName}`}
+        className={inputClassName}
       />
       {icon && (
-        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 sm:right-4">
           {icon}
         </span>
       )}
@@ -92,21 +102,21 @@ const inquiryTypes = [
 
 export default function ContactForm() {
   return (
-    <section id="contact-form" className="relative overflow-hidden bg-background py-12 lg:py-16">
+    <section id="contact-form" className="relative overflow-hidden bg-background py-10 sm:py-12 lg:py-16">
       <div className="pointer-events-none absolute -left-10 top-0 h-48 w-48 rounded-full bg-[#0471AD]/8 blur-3xl" />
       <div className="pointer-events-none absolute -right-10 bottom-0 h-48 w-48 rounded-full bg-yellow-100/40 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           <ScrollReveal>
             <AnimatedText
               text="CONTACT FORM"
               as="h2"
-              className="text-3xl font-bold uppercase text-foreground sm:text-4xl"
+              className="text-2xl font-bold uppercase text-foreground sm:text-3xl lg:text-4xl"
             />
 
             <motion.p
-              className="mt-4 max-w-lg text-base leading-relaxed text-muted-foreground"
+              className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -116,157 +126,158 @@ export default function ContactForm() {
               setup, pricing, and rollout plan for your stores.
             </motion.p>
 
-            <form className="mt-10" onSubmit={(e) => e.preventDefault()}>
-              <StaggerReveal className="space-y-5" stagger={0.08}>
-                  <motion.div
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-2"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <FormField
-                      label="Full Name (mandatory)"
-                      icon={<UserIcon />}
-                      placeholder="Enter full name"
-                      required
-                    />
-                    <FormField
-                      label="Store name (Optional)"
-                      icon={<UserIcon />}
-                      placeholder="Enter store name"
-                    />
-                  </motion.div>
+            <form className="mt-8 sm:mt-10" onSubmit={(e) => e.preventDefault()}>
+              <StaggerReveal className="space-y-4 sm:space-y-5" stagger={0.08}>
+                <motion.div
+                  className={formRowTwoColClassName}
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <FormField
+                    label="Full Name (mandatory)"
+                    icon={<UserIcon />}
+                    placeholder="Enter full name"
+                    required
+                  />
+                  <FormField
+                    label="Store name (Optional)"
+                    icon={<UserIcon />}
+                    placeholder="Enter store name"
+                  />
+                </motion.div>
 
-                  <motion.div
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-2"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <FormField
-                      label="Email (mandatory)"
-                      type="email"
-                      icon={<EnvelopeIcon />}
-                      placeholder="Enter email"
-                      required
-                    />
-                    <FormField
-                      label="Address (Optional)"
-                      icon={<EnvelopeIcon />}
-                      placeholder="Enter address"
-                    />
-                  </motion.div>
+                <motion.div
+                  className={formRowTwoColClassName}
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <FormField
+                    label="Email (mandatory)"
+                    type="email"
+                    icon={<EnvelopeIcon />}
+                    placeholder="Enter email"
+                    required
+                  />
+                  <FormField
+                    label="Address (Optional)"
+                    icon={<EnvelopeIcon />}
+                    placeholder="Enter address"
+                  />
+                </motion.div>
 
-                  <motion.div
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-[100px_1fr_1fr]"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <label className="relative block">
-                      <FieldLabel>Code</FieldLabel>
-                      <input
-                        type="text"
-                        defaultValue="+966"
-                        readOnly
-                        className={`w-full rounded-full bg-card py-3.5 pl-5 pr-3 text-center text-sm text-foreground ${formFieldBorderClassName}`}
-                      />
-                    </label>
-                    <FormField
-                      label="Phone (mandatory)"
-                      type="tel"
-                      icon={<PhoneIcon />}
-                      placeholder="Enter phone"
-                      required
+                <motion.div
+                  className={formRowPhoneClassName}
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <label className="relative block min-w-0">
+                    <FieldLabel>Code</FieldLabel>
+                    <input
+                      type="text"
+                      defaultValue="+966"
+                      readOnly
+                      className={`min-h-12 w-full rounded-full bg-card py-3 pl-3 pr-3 text-center text-base text-foreground sm:text-sm ${formFieldBorderClassName}`}
                     />
-                    <FormField
-                      label="Company URL (Optional)"
-                      icon={<PhoneIcon />}
-                      placeholder="Enter company URL"
-                    />
-                  </motion.div>
+                  </label>
+                  <FormField
+                    label="Phone (mandatory)"
+                    type="tel"
+                    icon={<PhoneIcon />}
+                    placeholder="Enter phone"
+                    required
+                  />
+                  <FormField
+                    label="Company URL (Optional)"
+                    icon={<PhoneIcon />}
+                    placeholder="Enter company URL"
+                    className="col-span-2 min-[360px]:col-span-1"
+                  />
+                </motion.div>
 
-                  <motion.div
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-2"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <label className="relative block">
-                      <FieldLabel>Inquiry Type (Optional)</FieldLabel>
-                      <select
-                        defaultValue=""
-                        className={`w-full appearance-none rounded-full bg-card py-3.5 pl-5 pr-11 text-sm text-foreground ${formFieldBorderClassName}`}
-                      >
-                        <option value="" disabled>
-                          Select inquiry type
+                <motion.div
+                  className={formRowTwoColClassName}
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <label className="relative block min-w-0">
+                    <FieldLabel>Inquiry Type (Optional)</FieldLabel>
+                    <select
+                      defaultValue=""
+                      className={`${inputClassName} appearance-none`}
+                    >
+                      <option value="" disabled>
+                        Select inquiry type
+                      </option>
+                      {inquiryTypes.map((type) => (
+                        <option key={type} value={type}>
+                          {type}
                         </option>
-                        {inquiryTypes.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <FormField
-                      label="Number of branches (Optional)"
-                      placeholder="e.g. 3 stores"
-                    />
-                  </motion.div>
+                      ))}
+                    </select>
+                  </label>
+                  <FormField
+                    label="Number of branches (Optional)"
+                    placeholder="e.g. 3 stores"
+                  />
+                </motion.div>
 
-                  <motion.div
-                    className="grid grid-cols-1 gap-5 sm:grid-cols-2"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <FormField
-                      label="What POS do you use? (Optional)"
-                      placeholder="Enter POS system"
-                    />
-                    <FormField
-                      label="Range of daily customers (Optional)"
-                      placeholder="Enter range"
-                    />
-                  </motion.div>
+                <motion.div
+                  className={formRowTwoColClassName}
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <FormField
+                    label="What POS do you use? (Optional)"
+                    placeholder="Enter POS system"
+                  />
+                  <FormField
+                    label="Range of daily customers (Optional)"
+                    placeholder="Enter range"
+                  />
+                </motion.div>
 
-                  <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: easeOut }}>
-                    <FormField label="Referral (Optional)" placeholder="Enter referral" />
-                  </motion.div>
+                <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: easeOut }}>
+                  <FormField label="Referral (Optional)" placeholder="Enter referral" />
+                </motion.div>
 
-                  <motion.label
-                    className="relative block"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                  >
-                    <FieldLabel>Message</FieldLabel>
-                    <textarea
-                      rows={5}
-                      placeholder="Write your message"
-                      className={`w-full resize-none rounded-[28px] bg-card px-5 py-4 text-sm text-foreground placeholder:text-muted-foreground/60 ${formFieldBorderClassName}`}
-                    />
-                  </motion.label>
+                <motion.label
+                  className="relative block"
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
+                  <FieldLabel>Message</FieldLabel>
+                  <textarea
+                    rows={5}
+                    placeholder="Write your message"
+                    className={`min-h-[8.5rem] w-full resize-none rounded-[28px] bg-card px-4 py-4 text-base text-foreground placeholder:text-muted-foreground/60 sm:px-5 sm:text-sm ${formFieldBorderClassName}`}
+                  />
+                </motion.label>
 
-                  <motion.button
-                    type="submit"
-                    className="inline-flex items-center gap-3 rounded-full bg-epaid py-2 pl-8 pr-2 text-sm font-semibold uppercase leading-none tracking-wide text-white transition-colors hover:bg-epaid-dark"
-                    variants={fadeUp}
-                    transition={{ duration: 0.55, ease: easeOut }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    SUBMIT
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-4 w-4 text-black"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M4 12l16-7-7 16-2-7-7-7z"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </motion.button>
+                <motion.button
+                  type="submit"
+                  className="flex w-full items-center justify-center gap-3 rounded-full bg-epaid py-2.5 pl-8 pr-2 text-sm font-semibold uppercase leading-none tracking-wide text-white transition-colors hover:bg-epaid-dark sm:inline-flex sm:w-auto sm:justify-start"
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  SUBMIT
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4 text-black"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M4 12l16-7-7 16-2-7-7-7z"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </motion.button>
               </StaggerReveal>
             </form>
           </ScrollReveal>

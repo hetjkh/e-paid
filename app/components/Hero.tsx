@@ -78,13 +78,13 @@ export default function Hero() {
               <Link href="/products" className={heroCtaClassName}>
                 VIEW PRODUCTS
                 <ButtonIconBadge size="sm">
-                  <ProductsIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
+                  <ProductsIcon className="h-3 w-3 text-epaid sm:h-4 sm:w-4" />
                 </ButtonIconBadge>
               </Link>
               <Link href="#contact" className={heroCtaClassName}>
                 CONTACT US
                 <ButtonIconBadge size="sm">
-                  <ArrowUpRightIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
+                  <ArrowUpRightIcon className="h-3 w-3 text-epaid sm:h-4 sm:w-4" />
                 </ButtonIconBadge>
               </Link>
             </motion.div>

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function PartnershipsPage() {
   return (
-    <main className="overflow-x-clip bg-background text-foreground">
+    <main className="overflow-x-clip bg-background text-foreground transition-colors duration-200">
       <PartnershipsHero />
       <PartnershipAnnouncement />
       <SatocciPartnership />

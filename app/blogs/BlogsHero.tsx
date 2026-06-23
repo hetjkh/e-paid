@@ -51,7 +51,7 @@ export default function BlogsHero() {
         >
           <div className={heroLeftColumnClassName}>
             <motion.h1
-              className={heroHeadingNowrapLgClassName}
+              className={`${heroHeadingNowrapLgClassName} text-balance`}
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >

@@ -50,7 +50,7 @@ export default function PartnershipsHero() {
         >
           <div className={heroLeftColumnClassName}>
             <motion.h1
-              className={heroHeadingClassName}
+              className={`${heroHeadingClassName} text-balance`}
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >

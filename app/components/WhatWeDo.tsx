@@ -131,11 +131,11 @@ export default function WhatWeDo() {
             <motion.div className="pt-2" variants={fadeUp}>
               <Link
                 href="/about"
-                className="btn-glow inline-flex items-center gap-4 rounded-full border-[3px] border-solid border-epaid bg-epaid py-2 pl-8 pr-2 text-base font-semibold uppercase leading-none tracking-normal text-white"
+                className="btn-glow inline-flex items-center gap-2 rounded-full border-2 border-solid border-epaid bg-epaid py-1.5 pl-5 pr-1.5 text-xs font-semibold uppercase leading-none tracking-normal text-white sm:gap-4 sm:border-[3px] sm:py-2 sm:pl-8 sm:pr-2 sm:text-base"
               >
                 Know More
-                <ButtonIconBadge>
-                  <ArrowUpRightIcon />
+                <ButtonIconBadge size="sm">
+                  <ArrowUpRightIcon className="h-3 w-3 text-epaid sm:h-4 sm:w-4" />
                 </ButtonIconBadge>
               </Link>
             </motion.div>

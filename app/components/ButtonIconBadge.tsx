@@ -10,7 +10,7 @@ export function ButtonIconBadge({
   return (
     <span
       className={`flex shrink-0 items-center justify-center rounded-full bg-white ${
-        size === "sm" ? "h-8 w-8" : "h-10 w-10"
+        size === "sm" ? "h-7 w-7 sm:h-8 sm:w-8" : "h-9 w-9 sm:h-10 sm:w-10"
       }`}
     >
       {children}

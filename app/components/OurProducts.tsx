@@ -178,7 +178,7 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                   ) : null}
 
                   <div className="mt-auto pt-6">
-                    <span className="block w-full rounded-xl border border-border-soft bg-epaid-yellow px-4 py-3 text-center text-sm font-semibold text-black transition-colors group-hover:bg-[#e8c840]">
+                    <span className="block w-full rounded-xl border border-border-soft bg-epaid-yellow px-3 py-2 text-center text-xs font-semibold text-black transition-colors group-hover:bg-[#e8c840] sm:px-4 sm:py-3 sm:text-sm">
                       View details
                     </span>
                   </div>
