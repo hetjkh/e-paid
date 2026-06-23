@@ -43,7 +43,7 @@ const steps = [
 
 export default function HowWeDoIt() {
   return (
-    <section className="section-tone relative overflow-x-clip bg-background pt-24 pb-24 lg:pt-32 lg:pb-32">
+    <section className="section-tone relative overflow-x-clip bg-background pt-10 pb-24 lg:pt-32 lg:pb-32">
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
           <SectionTitleGlow>

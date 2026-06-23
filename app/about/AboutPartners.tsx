@@ -20,12 +20,14 @@ export default function AboutPartners() {
           {...partnerLogoLoopProps}
           logos={aboutTopRowLogos}
           direction="left"
+          className="partner-logos-loop"
           ariaLabel="Partner logos scrolling left"
         />
         <LogoLoop
           {...partnerLogoLoopProps}
           logos={aboutBottomRowLogos}
           direction="right"
+          className="partner-logos-loop"
           ariaLabel="Partner logos scrolling right"
         />
       </div>

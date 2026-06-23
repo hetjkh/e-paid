@@ -18,6 +18,7 @@ export default function HomePartnerLogos() {
         {...partnerLogoLoopProps}
         logos={partnerLogos}
         direction="left"
+        className="partner-logos-loop"
         ariaLabel="Partner logos scrolling left to right"
       />
     </section>

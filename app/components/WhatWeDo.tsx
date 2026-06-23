@@ -53,7 +53,7 @@ function ServiceIcon() {
 
 export default function WhatWeDo() {
   return (
-    <section id="about" className="relative overflow-x-clip bg-background pt-12 pb-20 lg:pt-16 lg:pb-28">
+    <section id="about" className="relative overflow-x-clip bg-background pt-12 pb-8 lg:pt-16 lg:pb-28">
       <div className="pointer-events-none absolute right-0 top-1/4 z-0 h-[300px] w-[300px] translate-x-1/4 blur-[90px] glow-blue lg:h-[380px] lg:w-[380px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
@@ -83,7 +83,7 @@ export default function WhatWeDo() {
           </motion.p>
         </StaggerReveal>
 
-        <div className="mt-12 grid grid-cols-1 items-start gap-12 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(0,580px)] xl:gap-20">
+        <div className="mt-12 grid grid-cols-1 items-start gap-5 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(0,580px)] xl:gap-20">
           <StaggerReveal className="flex flex-col gap-8">
             <motion.p
               className="max-w-xl text-xl font-bold leading-snug text-foreground sm:text-2xl lg:text-[1.75rem] lg:leading-[1.4]"
@@ -128,7 +128,7 @@ export default function WhatWeDo() {
               ))}
             </div>
 
-            <motion.div className="pt-2" variants={fadeUp}>
+            <motion.div className="hidden pt-2 lg:block" variants={fadeUp}>
               <EpaidButton
                 href="/about"
                 size="hero"
@@ -140,21 +140,43 @@ export default function WhatWeDo() {
             </motion.div>
           </StaggerReveal>
 
-          <ScrollReveal variant={slideFromRight} className="relative mx-auto w-full max-w-[580px] lg:mx-0 lg:max-w-none">
-            <div
-              className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[90px] glow-blue sm:h-[340px] sm:w-[340px] lg:h-[380px] lg:w-[380px]"
-              aria-hidden="true"
-            />
-            <div className="relative z-[1] aspect-[4/5] sm:aspect-square lg:aspect-[5/6]">
-              <Image
-                src="/image1.png"
-                alt="Customer making a card payment on a POS terminal"
-                fill
-                className="object-contain object-center"
-                sizes="(max-width: 1024px) 100vw, 580px"
+          <div className="flex flex-col gap-4 lg:contents">
+            <ScrollReveal
+              variant={slideFromRight}
+              className="relative mx-auto w-full max-w-[580px] lg:mx-0 lg:max-w-none"
+            >
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[90px] glow-blue sm:h-[340px] sm:w-[340px] lg:h-[380px] lg:w-[380px]"
+                aria-hidden="true"
               />
-            </div>
-          </ScrollReveal>
+              <div className="relative z-[1] mx-auto aspect-square w-full max-w-[280px] sm:max-w-none lg:aspect-[5/6] lg:max-w-none">
+                <Image
+                  src="/image1.png"
+                  alt="Customer making a card payment on a POS terminal"
+                  fill
+                  className="object-contain object-center max-lg:object-bottom"
+                  sizes="(max-width: 1024px) 100vw, 580px"
+                />
+              </div>
+            </ScrollReveal>
+
+            <motion.div
+              className="lg:hidden"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, ease: easeOut }}
+            >
+              <EpaidButton
+                href="/about"
+                size="hero"
+                className="w-auto"
+                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+              >
+                Know More
+              </EpaidButton>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

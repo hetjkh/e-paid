@@ -500,6 +500,14 @@ button.btn-yellow-glow:hover,
   background: color-mix(in oklch, var(--foreground) 20%, transparent);
 }
 
+/* Partner logo carousels — smaller logos on mobile only (home + about) */
+@media (max-width: 1023px) {
+  .partner-logos-loop {
+    --logoloop-logoHeight: 100px !important;
+    --logoloop-gap: 28px !important;
+  }
+}
+
 /* Dark mode: white borders and text on all form fields */
 html.dark
   :is(

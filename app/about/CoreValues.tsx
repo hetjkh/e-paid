@@ -53,7 +53,7 @@ export default function CoreValues() {
                 "Partnership",
               ]}
               as="h2"
-              className="core-values-heading text-[2.125rem] font-semibold leading-tight tracking-normal text-foreground sm:text-4xl lg:text-[2.75rem] lg:[&>span:first-child]:whitespace-nowrap"
+              className="core-values-heading text-[clamp(1.25rem,4vw+0.65rem,2.75rem)] font-semibold leading-[1.12] tracking-normal text-foreground [&>span]:whitespace-nowrap"
             />
           </StaggerReveal>
 
