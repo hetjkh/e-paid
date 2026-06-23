@@ -109,7 +109,6 @@ export default function ContactForm() {
   return (
     <section id="contact-form" className="relative overflow-hidden bg-background py-10 sm:py-12 lg:py-16">
       <div className="pointer-events-none absolute -left-10 top-0 h-48 w-48 rounded-full bg-[#0471AD]/8 blur-3xl" />
-      <div className="pointer-events-none absolute -right-10 bottom-0 h-48 w-48 rounded-full bg-yellow-100/40 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 items-start gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
