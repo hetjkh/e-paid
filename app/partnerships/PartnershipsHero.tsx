@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import EpaidButton from "../components/EpaidButton";
 import Header from "../components/Header";
 import {
   heroBottomGradientClassName,
   heroContainerVariants,
   heroContentInnerClassName,
   heroContentOuterClassName,
-  heroCtaClassName,
   heroCtaWrapClassName,
   heroDesktopDescClassName,
   heroHeadingClassName,
@@ -17,7 +16,7 @@ import {
   heroTopGradientClassName,
   HERO_VIDEO_SRC,
 } from "../components/hero/shared";
-import { ArrowUpRightIcon, ButtonIconBadge } from "../components/ButtonIconBadge";
+import { ArrowUpRightIcon } from "../components/ButtonIconBadge";
 import { easeOut, fadeUp } from "../components/motion/scroll-motion";
 
 const HERO_DESCRIPTION =
@@ -71,12 +70,13 @@ export default function PartnershipsHero() {
               variants={fadeUp}
               transition={{ duration: 0.65, ease: easeOut }}
             >
-              <Link href="/contact" className={heroCtaClassName}>
+              <EpaidButton
+                href="/contact"
+                size="hero"
+                icon={<ArrowUpRightIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+              >
                 CONTACT US
-                <ButtonIconBadge size="sm">
-                  <ArrowUpRightIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
-                </ButtonIconBadge>
-              </Link>
+              </EpaidButton>
             </motion.div>
           </div>
 

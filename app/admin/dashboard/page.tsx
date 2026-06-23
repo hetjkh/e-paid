@@ -11,6 +11,7 @@ import {
   logoutAdmin,
   type AdminUser,
 } from "@/lib/admin-api";
+import EpaidButton from "@/app/components/EpaidButton";
 
 export default function AdminDashboardPage() {
   const router = useRouter();
@@ -65,14 +66,14 @@ export default function AdminDashboardPage() {
           <Link href="/" className="inline-flex items-center gap-3">
             <Image src="/Group.png" alt="ePAiD" width={120} height={36} className="h-9 w-auto" />
           </Link>
-          <button
+          <EpaidButton
             type="button"
-            onClick={handleLogout}
             disabled={loggingOut}
-            className="rounded-full border border-border-soft px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:border-epaid/40 hover:text-epaid disabled:opacity-60"
+            onClick={handleLogout}
+            className="px-5 py-2 text-sm normal-case disabled:opacity-60"
           >
             {loggingOut ? "Logging out…" : "Logout"}
-          </button>
+          </EpaidButton>
         </div>
       </header>
 

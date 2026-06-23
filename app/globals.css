@@ -343,6 +343,8 @@ html.dark body {
 }
 
 /* Outside @layer so hover wins over Tailwind bg-/text-/border- utilities */
+
+/* ── Primary: blue fill → yellow glow on hover ── */
 .btn-glow {
   transition:
     background-color 0.25s ease,
@@ -351,8 +353,17 @@ html.dark body {
     box-shadow 0.25s ease;
 }
 
+a.btn-glow:not(:hover),
+button.btn-glow:not(:hover),
+.btn-glow:not(:hover) {
+  background-color: #0471ad !important;
+  border-color: #0471ad !important;
+  color: #ffffff !important;
+}
+
 a.btn-glow:hover,
-button.btn-glow:hover {
+button.btn-glow:hover,
+.btn-glow:hover {
   background-color: #f4d95a !important;
   border-color: #f4d95a !important;
   color: #0c1424 !important;
@@ -360,6 +371,115 @@ button.btn-glow:hover {
     0 0 18px rgba(244, 217, 90, 0.65),
     0 0 36px rgba(244, 217, 90, 0.4),
     0 4px 16px rgba(244, 217, 90, 0.3) !important;
+}
+
+a.btn-glow:hover .btn-icon-badge,
+button.btn-glow:hover .btn-icon-badge,
+.btn-glow:hover .btn-icon-badge {
+  background-color: #ffffff !important;
+  color: #0471ad !important;
+}
+
+/* ── Secondary: white / outline → blue glow on hover ── */
+.btn-outline-glow,
+.btn-onboarding-glow {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+html:not(.dark) .btn-outline-glow:not(:hover),
+html:not(.dark) .btn-onboarding-glow:not(:hover) {
+  background-color: #ffffff !important;
+  border-color: #000000 !important;
+  color: #000000 !important;
+}
+
+html:not(.dark) .btn-outline-glow:not(:hover) .outline-badge,
+html:not(.dark) .btn-outline-glow:not(:hover) .onboarding-badge,
+html:not(.dark) .btn-onboarding-glow:not(:hover) .outline-badge,
+html:not(.dark) .btn-onboarding-glow:not(:hover) .onboarding-badge {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+html.dark .btn-outline-glow:not(:hover),
+html.dark .btn-onboarding-glow:not(:hover) {
+  background-color: transparent !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+html.dark .btn-outline-glow:not(:hover) .outline-badge,
+html.dark .btn-outline-glow:not(:hover) .onboarding-badge,
+html.dark .btn-onboarding-glow:not(:hover) .outline-badge,
+html.dark .btn-onboarding-glow:not(:hover) .onboarding-badge {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+a.btn-outline-glow:hover,
+button.btn-outline-glow:hover,
+.btn-outline-glow:hover,
+a.btn-onboarding-glow:hover,
+button.btn-onboarding-glow:hover,
+.btn-onboarding-glow:hover {
+  background-color: #0471ad !important;
+  border-color: #0471ad !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 18px rgba(4, 113, 173, 0.65),
+    0 0 36px rgba(4, 113, 173, 0.4),
+    0 4px 16px rgba(4, 113, 173, 0.3) !important;
+}
+
+a.btn-outline-glow:hover .outline-badge,
+button.btn-outline-glow:hover .outline-badge,
+.btn-outline-glow:hover .outline-badge,
+a.btn-outline-glow:hover .onboarding-badge,
+button.btn-outline-glow:hover .onboarding-badge,
+.btn-outline-glow:hover .onboarding-badge,
+a.btn-onboarding-glow:hover .outline-badge,
+button.btn-onboarding-glow:hover .outline-badge,
+.btn-onboarding-glow:hover .outline-badge,
+a.btn-onboarding-glow:hover .onboarding-badge,
+button.btn-onboarding-glow:hover .onboarding-badge,
+.btn-onboarding-glow:hover .onboarding-badge {
+  background-color: #ffffff !important;
+  color: #0471ad !important;
+  box-shadow: none !important;
+  --tw-ring-width: 0 !important;
+}
+
+/* ── Accent: yellow fill → blue glow on hover ── */
+.btn-yellow-glow {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+a.btn-yellow-glow:not(:hover),
+button.btn-yellow-glow:not(:hover),
+.btn-yellow-glow:not(:hover) {
+  background-color: #f4d95a !important;
+  border-color: #f4d95a !important;
+  color: #0c1424 !important;
+}
+
+a.btn-yellow-glow:hover,
+button.btn-yellow-glow:hover,
+.btn-yellow-glow:hover {
+  background-color: #0471ad !important;
+  border-color: #0471ad !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 18px rgba(4, 113, 173, 0.65),
+    0 0 36px rgba(4, 113, 173, 0.4),
+    0 4px 16px rgba(4, 113, 173, 0.3) !important;
 }
 
 .timeline-scroll {

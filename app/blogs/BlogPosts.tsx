@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import EpaidButton from "../components/EpaidButton";
+import { Button } from "@/components/ui/button";
 
 const posts = [
   {
@@ -72,15 +74,13 @@ const posts = [
 
 function ReadMoreButton() {
   return (
-    <a
+    <EpaidButton
       href="#"
-      className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border-soft py-1.5 pl-3 pr-1.5 text-[10px] font-semibold uppercase leading-none tracking-wide text-foreground transition-colors hover:bg-epaid/10 sm:pl-4 sm:text-[11px]"
-    >
-      Read More
-      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-epaid sm:h-8 sm:w-8">
+      className="shrink-0"
+      icon={
         <svg
           viewBox="0 0 24 24"
-          className="h-3.5 w-3.5 text-white"
+          className="h-3.5 w-3.5"
           fill="none"
           aria-hidden="true"
         >
@@ -92,8 +92,10 @@ function ReadMoreButton() {
             strokeLinejoin="round"
           />
         </svg>
-      </span>
-    </a>
+      }
+    >
+      Read More
+    </EpaidButton>
   );
 }
 
@@ -136,10 +138,11 @@ export default function BlogPosts() {
             placeholder="SEARCH HERE"
             className="min-h-12 w-full rounded-full border border-border-soft bg-card py-3 pl-5 pr-14 text-base uppercase tracking-wide text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30 sm:min-h-[3.25rem] sm:py-4 sm:pl-8 sm:pr-20 sm:text-sm"
           />
-          <button
+          <Button
             type="button"
+            variant="epaidOutline"
             aria-label="Search"
-            className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-epaid sm:right-3 sm:h-11 sm:w-11"
+            className="absolute right-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full p-0 sm:right-3 sm:h-11 sm:w-11"
           >
             <svg
               viewBox="0 0 24 24"
@@ -155,7 +158,7 @@ export default function BlogPosts() {
                 strokeLinecap="round"
               />
             </svg>
-          </button>
+          </Button>
         </div>
 
         {filteredPosts.length === 0 ? (

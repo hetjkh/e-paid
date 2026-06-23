@@ -12,6 +12,7 @@ import {
   updateProduct,
   type ProductImage,
 } from "@/lib/products-api";
+import EpaidButton from "@/app/components/EpaidButton";
 
 type SpecRow = { label: string; value: string };
 
@@ -391,19 +392,19 @@ export default function EditProductPage() {
           ) : null}
 
           <div className="flex flex-wrap gap-3">
-            <button
+            <EpaidButton
               type="submit"
               disabled={loading}
-              className="btn-glow rounded-full border-[3px] border-epaid bg-epaid px-12 py-3.5 text-sm font-semibold uppercase tracking-wide text-white disabled:opacity-60"
+              className="px-12 py-3.5 text-sm disabled:opacity-60"
             >
               {loading ? "Saving…" : "Save changes"}
-            </button>
-            <Link
+            </EpaidButton>
+            <EpaidButton
               href="/admin/products"
-              className="rounded-full border border-border-soft px-8 py-3.5 text-sm font-semibold text-foreground hover:border-epaid/40"
+              className="px-8 py-3.5 text-sm normal-case"
             >
               Cancel
-            </Link>
+            </EpaidButton>
           </div>
         </form>
       </div>

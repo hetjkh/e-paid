@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon, ButtonIconBadge } from "./ButtonIconBadge";
+import EpaidButton from "./EpaidButton";
+import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import {
   AnimatedText,
   easeOut,
@@ -129,15 +129,14 @@ export default function WhatWeDo() {
             </div>
 
             <motion.div className="pt-2" variants={fadeUp}>
-              <Link
+              <EpaidButton
                 href="/about"
-                className="btn-glow inline-flex items-center gap-2 rounded-full border-2 border-solid border-epaid bg-epaid py-1.5 pl-5 pr-1.5 text-xs font-semibold uppercase leading-none tracking-normal text-white sm:gap-4 sm:border-[3px] sm:py-2 sm:pl-8 sm:pr-2 sm:text-base"
+                size="hero"
+                className="w-auto"
+                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               >
                 Know More
-                <ButtonIconBadge size="sm">
-                  <ArrowUpRightIcon className="h-3 w-3 text-epaid sm:h-4 sm:w-4" />
-                </ButtonIconBadge>
-              </Link>
+              </EpaidButton>
             </motion.div>
           </StaggerReveal>
 

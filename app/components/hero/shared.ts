@@ -28,9 +28,6 @@ export const heroMobileDescClassName =
 export const heroDesktopDescClassName =
   "hidden min-w-0 max-w-[420px] text-base leading-relaxed text-black dark:text-[#b8c9dc] lg:block lg:pb-1 lg:text-lg";
 
-export const heroCtaClassName =
-  "btn-glow inline-flex w-full items-center justify-center gap-1.5 rounded-full border-2 border-solid border-epaid bg-epaid py-1.5 pl-4 pr-1 text-[11px] font-semibold uppercase leading-none tracking-normal text-white sm:w-auto sm:justify-start sm:gap-2 sm:border-[3px] sm:py-2 sm:pl-7 sm:pr-2 sm:text-sm lg:gap-3 lg:py-2 lg:pl-8 lg:text-base";
-
 export const heroCtaWrapClassName =
   "flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3";
 

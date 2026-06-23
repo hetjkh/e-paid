@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { loginAdmin, setStoredToken } from "@/lib/admin-api";
+import EpaidButton from "@/app/components/EpaidButton";
 
 function LockIcon() {
   return (
@@ -192,13 +193,13 @@ export default function AdminLoginPage() {
               </p>
             ) : null}
 
-            <button
+            <EpaidButton
               type="submit"
               disabled={loading}
-              className="btn-glow mt-6 w-full rounded-full border-[3px] border-solid border-epaid bg-epaid py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition-opacity disabled:opacity-60"
+              className="mt-6 w-full py-3.5 text-sm transition-opacity disabled:opacity-60"
             >
               {loading ? "Signing in…" : "Sign in"}
-            </button>
+            </EpaidButton>
           </form>
 
           <p className="mt-8 text-center text-sm text-muted-foreground">

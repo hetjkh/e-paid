@@ -10,9 +10,12 @@ import {
   ScrollReveal,
   StaggerReveal,
 } from "../components/motion/scroll-motion";
+import EpaidButton from "../components/EpaidButton";
+import { outlineBadgeClassName } from "../components/button-styles";
+import { cn } from "@/lib/utils";
 
 const formFieldBorderClassName =
-  "border border-solid border-[#00000040] focus:outline-none focus:ring-2 focus:ring-epaid/30";
+  "border border-solid border-[#000000] focus:outline-none focus:ring-2 focus:ring-epaid/30";
 
 const formRowTwoColClassName =
   "grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
@@ -253,31 +256,30 @@ export default function ContactForm() {
                   />
                 </motion.label>
 
-                <motion.button
-                  type="submit"
-                  className="flex w-full items-center justify-center gap-3 rounded-full bg-epaid py-2.5 pl-8 pr-2 text-sm font-semibold uppercase leading-none tracking-wide text-white transition-colors hover:bg-epaid-dark sm:inline-flex sm:w-auto sm:justify-start"
-                  variants={fadeUp}
-                  transition={{ duration: 0.55, ease: easeOut }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  SUBMIT
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-4 w-4 text-black"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 12l16-7-7 16-2-7-7-7z"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </motion.button>
+                <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: easeOut }}>
+                  <EpaidButton
+                    type="submit"
+                    className="w-full sm:inline-flex sm:w-auto sm:justify-start"
+                    badgeClassName={cn(outlineBadgeClassName, "h-10 w-10")}
+                    icon={
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-4 w-4"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M4 12l16-7-7 16-2-7-7-7z"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    }
+                  >
+                    SUBMIT
+                  </EpaidButton>
+                </motion.div>
               </StaggerReveal>
             </form>
           </ScrollReveal>

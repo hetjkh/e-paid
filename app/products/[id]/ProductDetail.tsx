@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import Header from "@/app/components/Header";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
+import EpaidButton from "@/app/components/EpaidButton";
 import { formatPrice, type Product, type ProductSpecification } from "@/lib/products-api";
 
 function SpecIcon({ label }: { label: string }) {
@@ -184,18 +185,18 @@ export default function ProductDetail({ product }: { product: Product }) {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Link
+              <EpaidButton
                 href="/contact#contact-form"
-                className="flex-1 rounded-2xl border border-border-soft bg-card-muted px-6 py-4 text-center text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:border-epaid/30 hover:bg-card"
+                className="flex-1"
               >
                 Contact Sales
-              </Link>
-              <Link
+              </EpaidButton>
+              <EpaidButton
                 href="/contact#contact-form"
-                className="flex-1 rounded-2xl bg-epaid-yellow px-6 py-4 text-center text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-[#e8c840]"
+                className="flex-1"
               >
                 Buy Now
-              </Link>
+              </EpaidButton>
             </div>
 
             {product.specifications.length > 0 ? (

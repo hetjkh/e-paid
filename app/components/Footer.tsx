@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import EpaidButton from "../components/EpaidButton";
 
 const landingLinks = [
   { label: "Home", href: "/" },
@@ -80,14 +81,14 @@ export default function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ENTER EMAIL"
-              className="min-h-12 w-full rounded-full border border-foreground/25 bg-card px-5 text-sm uppercase tracking-wide text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30 sm:min-h-[3.25rem] sm:flex-1 sm:rounded-r-none sm:border-r-0 sm:px-6 sm:text-base"
+              className="min-h-12 w-full rounded-full border border-solid border-[#000000] bg-card px-5 text-sm uppercase tracking-wide text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30 sm:min-h-[3.25rem] sm:flex-1 sm:rounded-r-none sm:border-r-0 sm:px-6 sm:text-base"
             />
-            <button
+            <EpaidButton
               type="submit"
-              className="min-h-12 shrink-0 rounded-full bg-foreground px-8 text-sm font-bold uppercase tracking-wide text-background transition-opacity hover:opacity-90 sm:min-h-[3.25rem] sm:rounded-l-none sm:px-10 sm:text-base"
+              className="min-h-12 shrink-0 px-8 text-sm font-bold sm:min-h-[3.25rem] sm:rounded-l-none sm:px-10 sm:text-base"
             >
               Subscribe
-            </button>
+            </EpaidButton>
           </form>
         </div>
       </section>

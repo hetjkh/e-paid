@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { getStoredToken } from "@/lib/admin-api";
 import { createProduct, normalizePriceInput } from "@/lib/products-api";
+import EpaidButton from "@/app/components/EpaidButton";
 
 type SpecRow = { label: string; value: string };
 
@@ -307,13 +308,13 @@ export default function AddProductPage() {
             </p>
           ) : null}
 
-          <button
+          <EpaidButton
             type="submit"
             disabled={loading}
-            className="btn-glow w-full rounded-full border-[3px] border-epaid bg-epaid py-3.5 text-sm font-semibold uppercase tracking-wide text-white disabled:opacity-60 sm:w-auto sm:px-12"
+            className="w-full py-3.5 text-sm disabled:opacity-60 sm:w-auto sm:px-12"
           >
             {loading ? "Uploading…" : "Save product"}
-          </button>
+          </EpaidButton>
         </form>
       </div>
     </main>

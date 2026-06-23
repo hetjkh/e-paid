@@ -1,12 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  ButtonIconBadge,
-  OnboardingIcon,
-  UserIcon,
-} from "./ButtonIconBadge";
+import EpaidButton from "./EpaidButton";
+import { OnboardingIcon, UserIcon } from "./ButtonIconBadge";
 import { useTheme } from "./ThemeProvider";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +29,7 @@ export default function NavbarControls({
   const [language, setLanguage] = useState<Language>("en");
   const isPage = variant === "page";
   const isStack = layout === "stack";
+  const navSize = isStack ? "navStack" : "nav";
 
   useEffect(() => {
     const stored = localStorage.getItem("epaid-language") as Language | null;
@@ -61,20 +58,13 @@ export default function NavbarControls({
     isPage ? "text-foreground hover:text-epaid" : "text-white hover:text-epaid-yellow"
   );
 
-  const authButtonClassName = cn(
-    "btn-glow inline-flex items-center justify-center gap-2 rounded-full border-[3px] border-solid border-epaid bg-epaid font-semibold uppercase leading-none tracking-normal text-white",
-    isStack
-      ? "w-full py-3 pl-6 pr-3 text-sm"
-      : "gap-1.5 py-1.5 pl-3 pr-1 text-[13px] sm:gap-2 sm:py-2 sm:pl-4 sm:pr-1 sm:text-sm lg:py-2 lg:pl-5 lg:pr-1.5 lg:text-base"
-  );
-
   return (
     <div
       className={cn(
         "items-center",
         isStack
           ? "flex w-full flex-col gap-4"
-          : "flex flex-wrap justify-end gap-2 sm:gap-3 lg:gap-4"
+          : "flex flex-wrap justify-end gap-2 overflow-visible sm:gap-3 lg:gap-4"
       )}
     >
       <div
@@ -125,18 +115,25 @@ export default function NavbarControls({
         </button>
       </div>
 
-      <Link href="#login" className={authButtonClassName} onClick={onNavigate}>
+      <EpaidButton
+        href="#login"
+        size={navSize}
+        className="relative z-10"
+        onClick={onNavigate}
+        icon={<UserIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+      >
         LOGIN
-        <ButtonIconBadge size="sm">
-          <UserIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
-        </ButtonIconBadge>
-      </Link>
-      <Link href="#onboarding" className={authButtonClassName} onClick={onNavigate}>
+      </EpaidButton>
+
+      <EpaidButton
+        href="#onboarding"
+        size={navSize}
+        className="relative z-10"
+        onClick={onNavigate}
+        icon={<OnboardingIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+      >
         ONBOARDING
-        <ButtonIconBadge size="sm">
-          <OnboardingIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
-        </ButtonIconBadge>
-      </Link>
+      </EpaidButton>
     </div>
   );
 }

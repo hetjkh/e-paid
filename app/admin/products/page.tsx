@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getStoredToken } from "@/lib/admin-api";
 import { deleteProduct, fetchProductsClient, formatPrice, type Product } from "@/lib/products-api";
+import EpaidButton from "@/app/components/EpaidButton";
 
 export default function AdminProductsPage() {
   const router = useRouter();
@@ -50,12 +51,9 @@ export default function AdminProductsPage() {
           <Link href="/admin/dashboard" className="text-sm font-medium text-epaid hover:underline">
             ← Dashboard
           </Link>
-          <Link
-            href="/admin/products/add"
-            className="rounded-full bg-epaid px-5 py-2 text-sm font-semibold text-white"
-          >
+          <EpaidButton href="/admin/products/add" className="px-5 py-2 text-sm normal-case">
             + Add product
-          </Link>
+          </EpaidButton>
         </div>
       </header>
 

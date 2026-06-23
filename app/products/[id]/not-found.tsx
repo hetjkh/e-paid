@@ -1,4 +1,4 @@
-import Link from "next/link";
+import EpaidButton from "@/app/components/EpaidButton";
 
 export default function ProductNotFound() {
   return (
@@ -7,12 +7,12 @@ export default function ProductNotFound() {
       <p className="mt-3 text-muted-foreground">
         This product may have been removed or the link is incorrect.
       </p>
-      <Link
+      <EpaidButton
         href="/products"
-        className="mt-8 rounded-full bg-epaid px-8 py-3 text-sm font-semibold text-white"
+        className="mt-8 px-8 py-3 text-sm normal-case"
       >
         Browse products
-      </Link>
+      </EpaidButton>
     </main>
   );
 }

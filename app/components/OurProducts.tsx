@@ -12,6 +12,7 @@ import {
   StaggerReveal,
 } from "./motion/scroll-motion";
 import SectionTitleGlow from "./SectionTitleGlow";
+import { secondaryButtonClassName } from "./button-styles";
 import {
   fetchProductsClient,
   formatPrice,
@@ -178,7 +179,7 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                   ) : null}
 
                   <div className="mt-auto pt-6">
-                    <span className="block w-full rounded-xl border border-border-soft bg-epaid-yellow px-3 py-2 text-center text-xs font-semibold text-black transition-colors group-hover:bg-[#e8c840] sm:px-4 sm:py-3 sm:text-sm">
+                    <span className={`${secondaryButtonClassName} block w-full justify-center text-center text-xs sm:text-sm`}>
                       View details
                     </span>
                   </div>

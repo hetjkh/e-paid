@@ -106,7 +106,7 @@ export default function Header({ variant = "hero" }: HeaderProps) {
             : "border-b border-transparent bg-transparent shadow-none"
         )}
       >
-        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:gap-6 lg:px-10 lg:py-6">
+        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 overflow-visible px-4 py-4 sm:px-6 lg:gap-6 lg:px-10 lg:py-6">
           <Link href="/" className="shrink-0" onClick={closeMenu}>
             <Image
               src="/Group.png"
@@ -130,7 +130,7 @@ export default function Header({ variant = "hero" }: HeaderProps) {
             </ul>
           </nav>
 
-          <div className="hidden shrink-0 lg:block">
+          <div className="hidden shrink-0 overflow-visible lg:block">
             <NavbarControls variant={usePageStyle ? "page" : "hero"} />
           </div>
 

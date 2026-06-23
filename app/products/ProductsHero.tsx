@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import EpaidButton from "../components/EpaidButton";
 import Header from "../components/Header";
 import HeroSocialLinks from "../components/hero/HeroSocialLinks";
 import {
@@ -9,7 +9,6 @@ import {
   heroContainerVariants,
   heroContentInnerClassName,
   heroContentOuterClassName,
-  heroCtaClassName,
   heroCtaWrapClassName,
   heroHeadingNowrapLgClassName,
   heroLeftColumnClassName,
@@ -17,7 +16,7 @@ import {
   heroTopGradientClassName,
   HERO_VIDEO_SRC,
 } from "../components/hero/shared";
-import { ButtonIconBadge, ProductsIcon } from "../components/ButtonIconBadge";
+import { ProductsIcon } from "../components/ButtonIconBadge";
 import { easeOut, fadeUp } from "../components/motion/scroll-motion";
 
 const HERO_DESCRIPTION =
@@ -70,12 +69,13 @@ export default function ProductsHero() {
               variants={fadeUp}
               transition={{ duration: 0.65, ease: easeOut }}
             >
-              <Link href="#products" className={heroCtaClassName}>
+              <EpaidButton
+                href="#products"
+                size="hero"
+                icon={<ProductsIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+              >
                 VIEW PRODUCTS
-                <ButtonIconBadge size="sm">
-                  <ProductsIcon className="h-3.5 w-3.5 text-epaid sm:h-4 sm:w-4" />
-                </ButtonIconBadge>
-              </Link>
+              </EpaidButton>
             </motion.div>
 
             <HeroSocialLinks className="lg:hidden" animateOnMount />
