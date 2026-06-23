@@ -10,25 +10,32 @@ import {
 
 export default function AboutMissionVision() {
   return (
-    <section className="relative overflow-hidden bg-background py-8 lg:py-12">
+    <section className="relative overflow-hidden bg-background py-10 lg:py-14">
+      <div className="pointer-events-none absolute left-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#0471AD]/8 blur-3xl" />
+
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
-        <StaggerReveal className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-0">
+        <StaggerReveal className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-0">
           <motion.div
             className="lg:border-r lg:border-border-soft lg:pr-14 xl:pr-20"
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
             <div className="relative inline-block">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280%] w-[240%] -translate-x-[68%] -translate-y-1/2 blur-[80px] glow-blue" />
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[280%] w-[240%] -translate-x-[68%] -translate-y-1/2 blur-[80px] glow-blue"
+                aria-hidden="true"
+              />
               <AnimatedText
-                text="OUR MISSION"
+                text="Our Mission"
                 as="h2"
-                className="relative whitespace-nowrap text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
+                className="core-values-heading relative text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
               />
             </div>
 
+            <div className="mt-6 h-1 w-16 rounded-full bg-epaid-yellow lg:mt-8" />
+
             <motion.p
-              className="mt-8 max-w-lg text-lg font-semibold leading-snug text-foreground sm:text-xl lg:mt-10"
+              className="sf-pro-display-medium mt-8 max-w-lg text-xl font-medium leading-snug text-foreground sm:text-2xl lg:mt-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -56,13 +63,15 @@ export default function AboutMissionVision() {
             transition={{ duration: 0.65, ease: easeOut, delay: 0.08 }}
           >
             <AnimatedText
-              text="OUR VISION"
+              text="Our Vision"
               as="h2"
-              className="whitespace-nowrap text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
+              className="core-values-heading text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
             />
 
+            <div className="mt-6 h-1 w-16 rounded-full bg-epaid-yellow lg:mt-8" />
+
             <motion.p
-              className="mt-8 max-w-lg text-lg font-semibold leading-snug text-foreground sm:text-xl lg:mt-10"
+              className="sf-pro-display-medium mt-8 max-w-lg text-xl font-medium leading-snug text-foreground sm:text-2xl lg:mt-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}

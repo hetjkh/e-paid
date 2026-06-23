@@ -1,4 +1,6 @@
 import AboutHero from "./AboutHero";
+import AboutMissionVision from "./AboutMissionVision";
+import AboutPartners from "./AboutPartners";
 import AboutStats from "./AboutStats";
 import CoreValues from "./CoreValues";
 import FounderMessage from "./FounderMessage";
@@ -17,6 +19,8 @@ export default function AboutPage() {
       <AboutHero />
       <div className="flex flex-col gap-12 lg:gap-16">
         <AboutStats />
+        <AboutMissionVision />
+        <AboutPartners />
         <div className="flex flex-col">
           <CoreValues />
           <FounderMessage />
