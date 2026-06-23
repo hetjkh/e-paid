@@ -21,11 +21,11 @@ const buttonVariants = cva(
           "rounded-lg bg-destructive/10 text-sm text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-sm text-primary underline-offset-4 hover:underline",
         epaid:
-          "btn-glow rounded-full border-[2px] border-solid border-epaid bg-epaid font-semibold uppercase leading-none tracking-normal text-white",
+          "btn-glow rounded-full border border-solid border-epaid bg-epaid font-semibold uppercase leading-none tracking-normal text-white",
         epaidOutline:
-          "btn-outline-glow overflow-visible rounded-full border-[2px] border-solid font-semibold uppercase leading-none tracking-normal",
+          "btn-outline-glow overflow-visible rounded-full border border-solid font-semibold uppercase leading-none tracking-normal",
         epaidYellow:
-          "btn-yellow-glow rounded-full border-[2px] border-solid border-epaid-yellow bg-epaid-yellow font-semibold uppercase leading-none tracking-normal text-[#0c1424]",
+          "btn-yellow-glow rounded-full border border-solid border-epaid-yellow bg-epaid-yellow font-semibold uppercase leading-none tracking-normal text-[#0c1424]",
       },
       size: {
         default:
@@ -34,6 +34,9 @@ const buttonVariants = cva(
         sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-9 gap-1.5 px-2.5 text-sm has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
         nav: "gap-1.5 py-1.5 pl-3 pr-1 text-[13px] sm:gap-2 sm:py-2 sm:pl-4 sm:pr-1 sm:text-sm lg:py-2 lg:pl-5 lg:pr-1.5 lg:text-base",
+        navPill:
+          "h-9 min-w-9 px-3.5 text-[13px] sm:h-10 sm:min-w-10 sm:px-4 sm:text-sm",
+        navRound: "size-9 p-0 sm:size-10",
         hero: "w-full gap-1.5 py-2 pl-4 pr-1.5 text-[13px] sm:w-auto sm:justify-start sm:gap-2 sm:py-2.5 sm:pl-6 sm:pr-1.5 sm:text-sm lg:gap-2.5 lg:py-3 lg:pl-7 lg:pr-2 lg:text-base",
         navStack: "w-full gap-2 py-3 pl-6 pr-3 text-sm",
         icon: "size-8 rounded-lg",

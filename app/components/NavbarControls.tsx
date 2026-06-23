@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import EpaidButton from "./EpaidButton";
 import { OnboardingIcon, UserIcon } from "./ButtonIconBadge";
 import { useTheme } from "./ThemeProvider";
@@ -21,13 +22,12 @@ function applyLanguage(language: Language) {
 }
 
 export default function NavbarControls({
-  variant = "hero",
+  variant: _variant = "hero",
   layout = "row",
   onNavigate,
 }: NavbarControlsProps) {
   const { theme, toggleTheme } = useTheme();
   const [language, setLanguage] = useState<Language>("en");
-  const isPage = variant === "page";
   const isStack = layout === "stack";
   const navSize = isStack ? "navStack" : "nav";
 
@@ -46,18 +46,6 @@ export default function NavbarControls({
     });
   };
 
-  const iconButtonClassName = cn(
-    "flex h-10 w-10 items-center justify-center rounded-full transition-colors",
-    isPage
-      ? "text-foreground hover:bg-epaid/10 hover:text-epaid"
-      : "text-white hover:text-epaid-yellow"
-  );
-
-  const textButtonClassName = cn(
-    "px-2 text-xs font-semibold uppercase leading-none tracking-normal transition-colors sm:text-sm",
-    isPage ? "text-foreground hover:text-epaid" : "text-white hover:text-epaid-yellow"
-  );
-
   return (
     <div
       className={cn(
@@ -73,19 +61,23 @@ export default function NavbarControls({
           isStack && "w-full justify-center border-b border-border-soft pb-4"
         )}
       >
-        <button
+        <Button
           type="button"
+          variant="epaidOutline"
+          size="navPill"
+          className="relative z-10"
           onClick={toggleLanguage}
-          className={textButtonClassName}
           aria-label={`Switch language, current ${language.toUpperCase()}`}
         >
           {language.toUpperCase()}
-        </button>
+        </Button>
 
-        <button
+        <Button
           type="button"
+          variant="epaidOutline"
+          size="navRound"
+          className="relative z-10"
           onClick={toggleTheme}
-          className={iconButtonClassName}
           aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
         >
           {theme === "light" ? (
@@ -112,7 +104,7 @@ export default function NavbarControls({
               <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
             </svg>
           )}
-        </button>
+        </Button>
       </div>
 
       <EpaidButton
