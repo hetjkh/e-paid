@@ -6,12 +6,8 @@ import {
   aboutTopRowLogos,
   partnerLogoLoopProps,
 } from "../components/partner-logos";
-import { useTheme } from "../components/ThemeProvider";
 
 export default function AboutPartners() {
-  const { theme } = useTheme();
-  const fadeOutColor = theme === "dark" ? "#0c1424" : "#FAF9F6";
-
   return (
     <section
       className="section-tone relative overflow-hidden bg-background py-10 lg:py-14"
@@ -24,14 +20,12 @@ export default function AboutPartners() {
           {...partnerLogoLoopProps}
           logos={aboutTopRowLogos}
           direction="left"
-          fadeOutColor={fadeOutColor}
           ariaLabel="Partner logos scrolling left"
         />
         <LogoLoop
           {...partnerLogoLoopProps}
           logos={aboutBottomRowLogos}
           direction="right"
-          fadeOutColor={fadeOutColor}
           ariaLabel="Partner logos scrolling right"
         />
       </div>

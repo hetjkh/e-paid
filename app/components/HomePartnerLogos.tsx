@@ -5,12 +5,8 @@ import {
   partnerLogoLoopProps,
   partnerLogos,
 } from "./partner-logos";
-import { useTheme } from "./ThemeProvider";
 
 export default function HomePartnerLogos() {
-  const { theme } = useTheme();
-  const fadeOutColor = theme === "dark" ? "#0c1424" : "#FAF9F6";
-
   return (
     <section
       className="relative overflow-hidden bg-background pb-6 lg:pb-8"
@@ -22,7 +18,6 @@ export default function HomePartnerLogos() {
         {...partnerLogoLoopProps}
         logos={partnerLogos}
         direction="left"
-        fadeOutColor={fadeOutColor}
         ariaLabel="Partner logos scrolling left to right"
       />
     </section>

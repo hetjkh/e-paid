@@ -50,6 +50,22 @@ const toCssLength = (value?: number | string): string | undefined =>
 const cx = (...parts: Array<string | false | null | undefined>) =>
   parts.filter(Boolean).join(" ");
 
+function edgeFadeStyle(
+  edge: "left" | "right" | "top" | "bottom",
+  color: string
+): React.CSSProperties {
+  const direction = {
+    left: "to right",
+    right: "to left",
+    top: "to bottom",
+    bottom: "to top",
+  }[edge];
+
+  return {
+    background: `linear-gradient(${direction}, ${color} 0%, transparent 100%)`,
+  };
+}
+
 const useResizeObserver = (
   callback: () => void,
   elements: Array<React.RefObject<Element | null>>,
@@ -296,14 +312,16 @@ export const LogoLoop = React.memo<LogoLoopProps>(
       isVertical
     );
 
+    const resolvedFadeColor = fadeOutColor ?? "var(--background)";
+
     const cssVariables = useMemo(
       () =>
         ({
           "--logoloop-gap": `${gap}px`,
           "--logoloop-logoHeight": `${logoHeight}px`,
-          ...(fadeOutColor && { "--logoloop-fadeColor": fadeOutColor }),
+          ...(fadeOut && { "--logoloop-fadeColor": resolvedFadeColor }),
         }) as React.CSSProperties,
-      [gap, logoHeight, fadeOutColor]
+      [gap, logoHeight, fadeOut, resolvedFadeColor]
     );
 
     const rootClasses = useMemo(
@@ -313,8 +331,6 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           isVertical ? "overflow-hidden h-full inline-block" : "overflow-x-hidden",
           "[--logoloop-gap:32px]",
           "[--logoloop-logoHeight:28px]",
-          "[--logoloop-fadeColorAuto:#FAF9F6]",
-          "dark:[--logoloop-fadeColorAuto:#0c1424]",
           scaleOnHover && "py-[calc(var(--logoloop-logoHeight)*0.1)]",
           className
         ),
@@ -468,38 +484,26 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               <>
                 <div
                   aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-x-0 top-0 z-10",
-                    "h-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_bottom,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
-                  )}
+                  className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[clamp(24px,8%,120px)]"
+                  style={edgeFadeStyle("top", resolvedFadeColor)}
                 />
                 <div
                   aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-x-0 bottom-0 z-10",
-                    "h-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_top,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
-                  )}
+                  className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[clamp(24px,8%,120px)]"
+                  style={edgeFadeStyle("bottom", resolvedFadeColor)}
                 />
               </>
             ) : (
               <>
                 <div
                   aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-y-0 left-0 z-10",
-                    "w-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
-                  )}
+                  className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[clamp(24px,8%,120px)]"
+                  style={edgeFadeStyle("left", resolvedFadeColor)}
                 />
                 <div
                   aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-y-0 right-0 z-10",
-                    "w-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]"
-                  )}
+                  className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[clamp(24px,8%,120px)]"
+                  style={edgeFadeStyle("right", resolvedFadeColor)}
                 />
               </>
             )}
