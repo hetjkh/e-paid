@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
+import { newsletterInputClassName } from "../components/form-styles";
 
 const landingLinks = [
   { label: "Home", href: "/" },
@@ -54,7 +55,8 @@ export default function Footer() {
 
   return (
     <footer className="mt-auto">
-      <section className="bg-gradient-to-r from-[#e6f3fa] via-background to-[#fef8eb] py-12 dark:from-[#0f1a2e] dark:via-[#0c1424] dark:to-[#121a28] sm:py-14 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#e6f3fa] via-background to-[#e8f4fc] py-12 dark:from-[#0f1a2e] dark:via-[#0c1424] dark:to-[#0f1a2e] sm:py-14 lg:py-16">
+        <div className="pointer-events-none absolute -left-10 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#0471AD]/8 blur-3xl" />
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:items-start lg:gap-12 xl:gap-20">
             <h2 className="text-balance text-2xl font-bold uppercase leading-tight text-foreground sm:text-3xl lg:text-[2.5rem] lg:leading-[1.1]">
@@ -81,7 +83,7 @@ export default function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="ENTER EMAIL"
-              className="min-h-12 w-full rounded-full border border-solid border-[#000000] bg-card px-5 text-sm uppercase tracking-wide text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30 sm:min-h-[3.25rem] sm:flex-1 sm:rounded-r-none sm:border-r-0 sm:px-6 sm:text-base"
+              className={newsletterInputClassName}
             />
             <EpaidButton
               type="submit"

@@ -12,10 +12,12 @@ import {
 } from "../components/motion/scroll-motion";
 import EpaidButton from "../components/EpaidButton";
 import { outlineBadgeClassName } from "../components/button-styles";
+import {
+  formFieldBorderClassName,
+  formFieldTextClassName,
+  formInputClassName,
+} from "../components/form-styles";
 import { cn } from "@/lib/utils";
-
-const formFieldBorderClassName =
-  "border border-solid border-[#000000] focus:outline-none focus:ring-2 focus:ring-epaid/30";
 
 const formRowTwoColClassName =
   "grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
@@ -23,7 +25,7 @@ const formRowTwoColClassName =
 const formRowPhoneClassName =
   "grid grid-cols-[5.5rem_minmax(0,1fr)] gap-3 min-[360px]:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1fr)] min-[480px]:gap-5";
 
-const inputClassName = `min-h-12 w-full rounded-full bg-card py-3 pl-4 pr-10 text-base text-foreground placeholder:text-muted-foreground/60 sm:py-3.5 sm:pl-5 sm:pr-11 sm:text-sm ${formFieldBorderClassName}`;
+const inputClassName = formInputClassName;
 
 function FieldLabel({ children }: { children: ReactNode }) {
   return (
@@ -179,7 +181,7 @@ export default function ContactForm() {
                       type="text"
                       defaultValue="+966"
                       readOnly
-                      className={`min-h-12 w-full rounded-full bg-card py-3 pl-3 pr-3 text-center text-base text-foreground sm:text-sm ${formFieldBorderClassName}`}
+                      className={`min-h-12 w-full rounded-full bg-card py-3 pl-3 pr-3 text-center text-base sm:text-sm ${formFieldBorderClassName} ${formFieldTextClassName}`}
                     />
                   </label>
                   <FormField
@@ -252,7 +254,7 @@ export default function ContactForm() {
                   <textarea
                     rows={5}
                     placeholder="Write your message"
-                    className={`min-h-[8.5rem] w-full resize-none rounded-[28px] bg-card px-4 py-4 text-base text-foreground placeholder:text-muted-foreground/60 sm:px-5 sm:text-sm ${formFieldBorderClassName}`}
+                    className={`min-h-[8.5rem] w-full resize-none rounded-[28px] bg-card px-4 py-4 text-base sm:px-5 sm:text-sm ${formFieldBorderClassName} ${formFieldTextClassName}`}
                   />
                 </motion.label>
 

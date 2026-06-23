@@ -499,3 +499,19 @@ button.btn-yellow-glow:hover,
   border-radius: 999px;
   background: color-mix(in oklch, var(--foreground) 20%, transparent);
 }
+
+/* Dark mode: white borders and text on all form fields */
+html.dark
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="file"]):not([type="range"]):not([type="color"]):not([type="submit"]):not([type="button"]):not([type="image"]),
+    textarea,
+    select
+  ) {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+html.dark :is(input, textarea)::placeholder {
+  color: rgba(255, 255, 255, 0.55) !important;
+  opacity: 1;
+}

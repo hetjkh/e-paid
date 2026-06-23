@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
 import { Button } from "@/components/ui/button";
+import { formFieldBorderClassName, formFieldTextClassName } from "../components/form-styles";
 
 const posts = [
   {
@@ -136,7 +137,7 @@ export default function BlogPosts() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="SEARCH HERE"
-            className="min-h-12 w-full rounded-full border border-border-soft bg-card py-3 pl-5 pr-14 text-base uppercase tracking-wide text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-epaid/30 sm:min-h-[3.25rem] sm:py-4 sm:pl-8 sm:pr-20 sm:text-sm"
+            className={`min-h-12 w-full rounded-full bg-card py-3 pl-5 pr-14 text-base uppercase tracking-wide sm:min-h-[3.25rem] sm:py-4 sm:pl-8 sm:pr-20 sm:text-sm ${formFieldBorderClassName} ${formFieldTextClassName}`}
           />
           <Button
             type="button"
