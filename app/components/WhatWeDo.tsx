@@ -149,7 +149,7 @@ export default function WhatWeDo() {
                 className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 blur-[90px] glow-blue sm:h-[340px] sm:w-[340px] lg:h-[380px] lg:w-[380px]"
                 aria-hidden="true"
               />
-              <div className="relative z-[1] mx-auto aspect-square w-full max-w-[280px] sm:max-w-none lg:aspect-[5/6] lg:max-w-none">
+              <div className="relative z-[1] mx-auto aspect-square w-full max-w-full sm:max-w-none lg:aspect-[5/6] lg:max-w-none">
                 <Image
                   src="/image1.png"
                   alt="Customer making a card payment on a POS terminal"
