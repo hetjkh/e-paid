@@ -60,7 +60,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative overflow-x-clip bg-background pb-24 pt-0 lg:pb-32 lg:pt-0">
+    <section id="faq" className="relative overflow-x-clip bg-background pb-24 pt-0 lg:pb-32 lg:pt-0">
       <div className="pointer-events-none absolute bottom-0 right-0 z-0 h-[280px] w-[320px] translate-x-[10%] translate-y-[25%] blur-[80px] glow-yellow lg:h-[320px] lg:w-[420px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 pt-6 lg:px-10 lg:pt-8">

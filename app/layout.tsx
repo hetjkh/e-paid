@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "./components/ThemeProvider";
+import Footer from "./components/Footer";
 import { InlineScript } from "./components/InlineScript";
 import "./globals.css";
 import { Geist } from "next/font/google";
@@ -63,7 +64,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${tasaOrbiter.className} flex min-h-full flex-col overflow-x-clip bg-background font-tasa-orbiter text-foreground`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
