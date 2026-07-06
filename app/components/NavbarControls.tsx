@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import EpaidButton from "./EpaidButton";
 import {
-  ArrowUpRightIcon,
   OnboardingIcon,
-  ProductsIcon,
   UserIcon,
 } from "./ButtonIconBadge";
 import { useTheme } from "./ThemeProvider";
@@ -32,9 +29,6 @@ export default function NavbarControls({
   layout = "row",
   onNavigate,
 }: NavbarControlsProps) {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const showHomeCtas = isHome && (variant === "hero" || layout === "stack");
   const { theme, toggleTheme } = useTheme();
   const [language, setLanguage] = useState<Language>("en");
   const isStack = layout === "stack";
@@ -116,51 +110,25 @@ export default function NavbarControls({
         </Button>
       </div>
 
-      {showHomeCtas ? (
-        <>
-          <EpaidButton
-            href="/products"
-            size={navSize}
-            className="relative z-10 shrink-0"
-            onClick={onNavigate}
-            icon={<ProductsIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
-          >
-            VIEW PRODUCTS
-          </EpaidButton>
+      <EpaidButton
+        href="#login"
+        size={navSize}
+        className="relative z-10"
+        onClick={onNavigate}
+        icon={<UserIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+      >
+        LOGIN
+      </EpaidButton>
 
-          <EpaidButton
-            href="/contact"
-            size={navSize}
-            className="relative z-10 shrink-0"
-            onClick={onNavigate}
-            icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
-          >
-            CONTACT US
-          </EpaidButton>
-        </>
-      ) : (
-        <>
-          <EpaidButton
-            href="#login"
-            size={navSize}
-            className="relative z-10"
-            onClick={onNavigate}
-            icon={<UserIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
-          >
-            LOGIN
-          </EpaidButton>
-
-          <EpaidButton
-            href="/onboarding"
-            size={navSize}
-            className="relative z-10"
-            onClick={onNavigate}
-            icon={<OnboardingIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
-          >
-            ONBOARDING
-          </EpaidButton>
-        </>
-      )}
+      <EpaidButton
+        href="/onboarding"
+        size={navSize}
+        className="relative z-10"
+        onClick={onNavigate}
+        icon={<OnboardingIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+      >
+        ONBOARDING
+      </EpaidButton>
     </div>
   );
 }
