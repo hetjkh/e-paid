@@ -17,37 +17,19 @@ const testimonials = [
     name: "Melodi Askelöf",
     role: "Consumer",
     text: "ePaid delivers a fast, reliable POS experience with smooth payments, modern hardware, and excellent support. Perfect for retail businesses wanting simplicity, security, and seamless daily transactions without any hidden hassles.",
-    avatar: "/review/1.png",
+    avatar: "/review1.png",
   },
   {
     name: "Fatima Hassan Ali",
     role: "Consumer",
     text: "Using ePaid POS has improved checkout speed and customer satisfaction. The system is intuitive, stable, and affordable, making it ideal for growing shops and service-based businesses across multiple retail environments.",
-    avatar: "/review/3.png",
+    avatar: "/reveiw2.png",
   },
   {
     name: "Ahmad bin Khalid",
     role: "Consumer",
     text: "ePaid stands out for its sleek POS design, secure transactions, and responsive support team. Setup was quick, training was easy, and daily operations now run smoothly with minimal technical issues.",
-    avatar: "/review/2.png",
-  },
-  {
-    name: "Sara Almutairi",
-    role: "Retail Owner",
-    text: "Switching to ePaid reduced checkout time and made daily reconciliation much easier. The terminals are stable, and the support team is quick when we need help.",
-    avatar: "/review/3.png",
-  },
-  {
-    name: "Omar Alharbi",
-    role: "Operations Manager",
-    text: "We rolled out ePaid across multiple locations with zero downtime. Reporting is clear, onboarding was smooth, and the experience feels modern from day one.",
-    avatar: "/review/4.png",
-  },
-  {
-    name: "Noura Fahad",
-    role: "Store Supervisor",
-    text: "Payments are fast and consistent, even during peak hours. Staff training was simple, and customers love the contactless flow.",
-    avatar: "/review/3.png",
+    avatar: "/review3.png",
   },
 ];
 

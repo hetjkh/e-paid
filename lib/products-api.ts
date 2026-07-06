@@ -23,29 +23,37 @@ export type Product = {
 };
 
 export async function fetchProducts(): Promise<Product[]> {
+  const { getAllFallbackProducts } = await import("./fallback-products");
+
   try {
     const res = await fetch(`${API_URL}/api/products`, {
       next: { revalidate: 60 },
     });
 
-    if (!res.ok) return [];
+    if (!res.ok) return getAllFallbackProducts();
 
     const data = await res.json();
-    return data.products ?? [];
+    const products: Product[] = data.products ?? [];
+    return products.length > 0 ? products : getAllFallbackProducts();
   } catch {
-    return [];
+    return getAllFallbackProducts();
   }
 }
 
 export async function fetchProductsClient(): Promise<Product[]> {
-  const res = await fetch(`${API_URL}/api/products`);
+  const { getAllFallbackProducts } = await import("./fallback-products");
 
-  if (!res.ok) {
-    throw new Error("Failed to load products");
+  try {
+    const res = await fetch(`${API_URL}/api/products`);
+
+    if (!res.ok) return getAllFallbackProducts();
+
+    const data = await res.json();
+    const products: Product[] = data.products ?? [];
+    return products.length > 0 ? products : getAllFallbackProducts();
+  } catch {
+    return getAllFallbackProducts();
   }
-
-  const data = await res.json();
-  return data.products ?? [];
 }
 
 export async function fetchProductById(id: string): Promise<Product | null> {

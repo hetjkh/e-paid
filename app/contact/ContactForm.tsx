@@ -11,6 +11,7 @@ import {
   StaggerReveal,
 } from "../components/motion/scroll-motion";
 import EpaidButton from "../components/EpaidButton";
+import CountryCodeSelect from "../components/CountryCodeSelect";
 import { outlineBadgeClassName } from "../components/button-styles";
 import {
   formFieldBorderClassName,
@@ -22,8 +23,7 @@ import { cn } from "@/lib/utils";
 const formRowTwoColClassName =
   "grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
 
-const formRowPhoneClassName =
-  "grid grid-cols-[5.5rem_minmax(0,1fr)] gap-3 min-[360px]:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1fr)] min-[480px]:gap-5";
+const formRowPhoneClassName = "flex items-start gap-3 min-[480px]:gap-5";
 
 const inputClassName = formInputClassName;
 
@@ -174,14 +174,9 @@ export default function ContactForm() {
                   variants={fadeUp}
                   transition={{ duration: 0.55, ease: easeOut }}
                 >
-                  <label className="relative block min-w-0">
+                  <label className="relative w-[7.25rem] shrink-0 sm:w-[7.75rem]">
                     <FieldLabel>Code</FieldLabel>
-                    <input
-                      type="text"
-                      defaultValue="+966"
-                      readOnly
-                      className={`min-h-12 w-full rounded-full bg-card py-3 pl-3 pr-3 text-center text-base sm:text-sm ${formFieldBorderClassName} ${formFieldTextClassName}`}
-                    />
+                    <CountryCodeSelect defaultDialCode="+966" />
                   </label>
                   <FormField
                     label="Phone (mandatory)"
@@ -189,12 +184,18 @@ export default function ContactForm() {
                     icon={<PhoneIcon />}
                     placeholder="Enter phone"
                     required
+                    className="min-w-0 flex-1"
                   />
+                </motion.div>
+
+                <motion.div
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
                   <FormField
                     label="Company URL (Optional)"
                     icon={<PhoneIcon />}
                     placeholder="Enter company URL"
-                    className="col-span-2 min-[360px]:col-span-1"
                   />
                 </motion.div>
 

@@ -106,7 +106,7 @@ export default function Header({ variant = "hero" }: HeaderProps) {
             : "border-b border-transparent bg-transparent shadow-none"
         )}
       >
-        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 overflow-visible px-4 py-4 sm:px-6 lg:gap-6 lg:px-10 lg:py-6">
+        <div className="relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 overflow-visible px-4 py-2.5 sm:px-6 lg:gap-6 lg:px-10 lg:py-3">
           <Link href="/" className="shrink-0" onClick={closeMenu}>
             <Image
               src="/Group.png"
@@ -114,7 +114,7 @@ export default function Header({ variant = "hero" }: HeaderProps) {
               width={186}
               height={73}
               priority
-              className="h-11 w-auto sm:h-[52px] lg:h-[73px]"
+              className="h-10 w-auto sm:h-11 lg:h-14"
             />
           </Link>
 

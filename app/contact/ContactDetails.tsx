@@ -62,8 +62,7 @@ const contactChannels = [
   },
   {
     title: "Business Hours",
-    value: "Sun – Thu, 9 AM – 6 PM",
-    detail: "Friday & Saturday: closed",
+    value: "Monday – Friday, 9 AM – 6 PM",
     href: undefined,
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
@@ -150,9 +149,11 @@ export default function ContactDetails() {
                       {channel.value}
                     </p>
                   )}
-                  <p className="sf-pro-display-medium mt-2 text-sm font-medium leading-relaxed text-muted-foreground">
-                    {channel.detail}
-                  </p>
+                  {channel.detail ? (
+                    <p className="sf-pro-display-medium mt-2 text-sm font-medium leading-relaxed text-muted-foreground">
+                      {channel.detail}
+                    </p>
+                  ) : null}
                 </motion.article>
               ))}
             </StaggerReveal>

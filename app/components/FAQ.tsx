@@ -128,15 +128,20 @@ export default function FAQ() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="space-y-4 px-6 pb-6 pt-0 lg:px-8 lg:pb-8">
-                      {faq.answer.map((paragraph) => (
-                        <p
-                          key={paragraph.slice(0, 40)}
-                          className="text-sm leading-relaxed text-muted-foreground lg:text-base"
-                        >
-                          {paragraph}
-                        </p>
-                      ))}
+                    <div className="px-6 pb-6 pt-0 lg:px-8 lg:pb-8">
+                      <ol className="list-none space-y-3 lg:space-y-4">
+                        {faq.answer.map((point, pointIndex) => (
+                          <li
+                            key={point.slice(0, 40)}
+                            className="flex gap-3 text-sm leading-relaxed lg:text-base"
+                          >
+                            <span className="shrink-0 font-semibold text-epaid">
+                              {pointIndex + 1}.
+                            </span>
+                            <span className="text-muted-foreground">{point}</span>
+                          </li>
+                        ))}
+                      </ol>
                     </div>
                   </div>
                 </div>

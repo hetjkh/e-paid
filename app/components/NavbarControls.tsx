@@ -118,7 +118,7 @@ export default function NavbarControls({
       </EpaidButton>
 
       <EpaidButton
-        href="#onboarding"
+        href="/onboarding"
         size={navSize}
         className="relative z-10"
         onClick={onNavigate}

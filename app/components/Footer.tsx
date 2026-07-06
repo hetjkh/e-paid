@@ -52,6 +52,17 @@ const socialLinks = [
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleNewsletterSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) return;
+
+    setEmail("");
+    setSuccessMessage("Successfully sent!");
+  };
 
   return (
     <footer className="mt-auto">
@@ -72,7 +83,7 @@ export default function Footer() {
 
           <form
             className="mx-auto mt-8 flex max-w-3xl flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-0"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleNewsletterSubmit}
           >
             <label htmlFor="footer-email" className="sr-only">
               Email address
@@ -80,8 +91,12 @@ export default function Footer() {
             <input
               id="footer-email"
               type="email"
+              required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                if (successMessage) setSuccessMessage("");
+              }}
               placeholder="ENTER EMAIL"
               className={newsletterInputClassName}
             />
@@ -92,6 +107,16 @@ export default function Footer() {
               Subscribe
             </EpaidButton>
           </form>
+
+          {successMessage ? (
+            <p
+              className="mx-auto mt-4 max-w-3xl text-center text-sm font-semibold text-epaid sm:text-base"
+              role="status"
+              aria-live="polite"
+            >
+              {successMessage}
+            </p>
+          ) : null}
         </div>
       </section>
 

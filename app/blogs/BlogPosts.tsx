@@ -5,78 +5,12 @@ import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
 import { Button } from "@/components/ui/button";
 import { formFieldBorderClassName, formFieldTextClassName } from "../components/form-styles";
+import { blogPosts } from "@/lib/blog-posts";
 
-const posts = [
-  {
-    title: "EPAID & SATOCCI TEAM UP TO BOOST DIGITAL RETAIL POS",
-    excerpt:
-      "The partnership brings seamless in-store payments, smarter checkout flows, and scalable POS solutions for modern retailers.",
-    date: "JUL 19, 2025",
-    readTime: "2 min read",
-    image: "/image1.png",
-  },
-  {
-    title: "HOW SMART POS TERMINALS ARE CHANGING SAUDI RETAIL",
-    excerpt:
-      "From contactless payments to real-time reporting, businesses are adopting faster and more secure checkout experiences.",
-    date: "JUN 28, 2025",
-    readTime: "3 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201.png",
-  },
-  {
-    title: "5 WAYS TO IMPROVE PAYMENT SECURITY IN YOUR STORE",
-    excerpt:
-      "Simple practices that protect customer data, reduce fraud risk, and keep every transaction safe and compliant.",
-    date: "JUN 12, 2025",
-    readTime: "4 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201%20(1).png",
-  },
-  {
-    title: "WHY DIGITAL RECEIPTS ARE THE FUTURE OF RETAIL",
-    excerpt:
-      "Paperless proof of purchase helps merchants save time, reduce waste, and offer customers a cleaner shopping journey.",
-    date: "MAY 30, 2025",
-    readTime: "2 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201.jpg",
-  },
-  {
-    title: "FIELD ENGINEERING SUPPORT THAT KEEPS POS RUNNING",
-    excerpt:
-      "Nationwide on-ground support ensures devices stay online, operations stay smooth, and downtime stays minimal.",
-    date: "MAY 14, 2025",
-    readTime: "3 min read",
-    image: "/image1.png",
-  },
-  {
-    title: "CHOOSING THE RIGHT PAYMENT DEVICE FOR YOUR BUSINESS",
-    excerpt:
-      "Handheld, countertop, or portable — here is how to match POS hardware to your store size and daily workflow.",
-    date: "APR 22, 2025",
-    readTime: "5 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201.png",
-  },
-  {
-    title: "FINTECH INTEGRATION FOR GROWING MERCHANT NETWORKS",
-    excerpt:
-      "Connected payment systems simplify loyalty, reporting, and multi-branch management for ambitious retailers.",
-    date: "APR 8, 2025",
-    readTime: "3 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201%20(1).png",
-  },
-  {
-    title: "EPAID EXPANDS ITS MSP POS SERVICE ACROSS REGIONS",
-    excerpt:
-      "The growing network delivers reliable payment infrastructure, advisory services, and long-term merchant support.",
-    date: "MAR 25, 2025",
-    readTime: "2 min read",
-    image: "/prodcut-images/Gemini_Generated_Image_1rorcz1rorcz1ror%201.jpg",
-  },
-];
-
-function ReadMoreButton() {
+function ReadMoreButton({ href }: { href: string }) {
   return (
     <EpaidButton
-      href="#"
+      href={href}
       className="shrink-0"
       icon={
         <svg
@@ -103,7 +37,7 @@ function ReadMoreButton() {
 export default function BlogPosts() {
   const [query, setQuery] = useState("");
 
-  const filteredPosts = posts.filter((post) => {
+  const filteredPosts = blogPosts.filter((post) => {
     const search = query.trim().toLowerCase();
     if (!search) return true;
     return (
@@ -170,7 +104,7 @@ export default function BlogPosts() {
           <div className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 min-[480px]:gap-5 lg:mt-14 lg:grid-cols-4 lg:gap-5">
             {filteredPosts.map((post) => (
               <article
-                key={post.title}
+                key={post.id}
                 className="flex min-w-0 flex-col overflow-hidden rounded-[16px] border border-border-soft bg-card p-3 sm:rounded-[20px] sm:p-4"
               >
                 <div className="overflow-hidden rounded-[12px] sm:rounded-[16px]">
@@ -201,7 +135,7 @@ export default function BlogPosts() {
                       {post.readTime}
                     </p>
                   </div>
-                  <ReadMoreButton />
+                  <ReadMoreButton href={`/blogs/${post.id}`} />
                 </div>
               </article>
             ))}
