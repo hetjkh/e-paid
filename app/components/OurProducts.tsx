@@ -145,12 +145,12 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                     <AnimatedText
                       text={product.name}
                       as="h3"
-                      className="text-2xl font-bold text-foreground"
+                      className="min-w-0 flex-1 text-2xl font-bold text-foreground"
                     />
                     <AnimatedText
                       text={product.price}
                       as="span"
-                      className="text-2xl font-bold text-epaid"
+                      className="shrink-0 whitespace-nowrap text-2xl font-bold text-epaid"
                       delay={0.08}
                     />
                   </div>

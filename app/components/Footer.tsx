@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
+import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import { newsletterInputClassName } from "../components/form-styles";
 
 const landingLinks = [
@@ -82,7 +83,7 @@ export default function Footer() {
           </div>
 
           <form
-            className="mx-auto mt-8 flex max-w-3xl flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-0"
+            className="mx-auto mt-8 flex max-w-3xl flex-col gap-3 sm:mt-10 sm:flex-row sm:items-stretch sm:gap-0"
             onSubmit={handleNewsletterSubmit}
           >
             <label htmlFor="footer-email" className="sr-only">
@@ -102,7 +103,8 @@ export default function Footer() {
             />
             <EpaidButton
               type="submit"
-              className="min-h-12 shrink-0 px-8 text-sm font-bold sm:min-h-[3.25rem] sm:rounded-l-none sm:px-10 sm:text-base"
+              className="h-12 w-full shrink-0 justify-center sm:h-[3.25rem] sm:w-auto sm:justify-start sm:rounded-l-none"
+              icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
             >
               Subscribe
             </EpaidButton>

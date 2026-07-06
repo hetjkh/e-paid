@@ -78,7 +78,7 @@ export default function Hero() {
                 VIEW PRODUCTS
               </EpaidButton>
               <EpaidButton
-                href="#contact"
+                href="/contact"
                 size="hero"
                 icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
               >

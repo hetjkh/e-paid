@@ -5,8 +5,6 @@ import CountryCodeSelect from "@/app/components/CountryCodeSelect";
 import Header from "@/app/components/Header";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
 import {
-  formFieldBorderClassName,
-  formFieldTextClassName,
   formInputClassName,
 } from "@/app/components/form-styles";
 import { cn } from "@/lib/utils";
@@ -117,11 +115,16 @@ function NextButton({
     <button
       type={type}
       onClick={onClick}
-      className="inline-flex min-h-12 items-center gap-3 rounded-full bg-black px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:px-8 sm:text-base"
+      className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-black py-1 pl-6 pr-1.5 text-sm font-semibold uppercase leading-none tracking-wide text-white transition-opacity hover:opacity-90 sm:h-[52px] sm:pl-7 sm:pr-2 sm:text-base"
     >
-      {label}
-      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" aria-hidden="true">
+      <span className="whitespace-nowrap">{label}</span>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-black sm:h-10 sm:w-10">
+        <svg
+          viewBox="0 0 24 24"
+          className="h-4 w-4 sm:h-[18px] sm:w-[18px]"
+          fill="none"
+          aria-hidden="true"
+        >
           <path
             d="M5 12h14M13 6l6 6-6 6"
             stroke="currentColor"
@@ -549,7 +552,7 @@ export default function OnboardingForm() {
                 </div>
               ) : null}
 
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-5">
                 {step > 0 ? (
                   <button
                     type="button"
