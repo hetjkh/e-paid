@@ -15,12 +15,10 @@ import {
   heroLeftColumnClassName,
   heroMobileDescClassName,
   heroTopGradientClassName,
+  HERO_DESCRIPTION_LINES,
   HERO_VIDEO_SRC,
 } from "./hero/shared";
 import { easeOut, fadeUp } from "./motion/scroll-motion";
-
-const HERO_DESCRIPTION =
-  "We deliver smart digital solutions, secure payment systems, and expert advisory services that help businesses grow, streamline operations, and scale confidently.";
 
 export default function Hero() {
   return (
@@ -62,7 +60,11 @@ export default function Hero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              {HERO_DESCRIPTION}
+              {HERO_DESCRIPTION_LINES.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </motion.p>
 
             <motion.div
@@ -73,14 +75,14 @@ export default function Hero() {
               <EpaidButton
                 href="/products"
                 size="hero"
-                icon={<ProductsIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+                icon={<ProductsIcon />}
               >
                 VIEW PRODUCTS
               </EpaidButton>
               <EpaidButton
                 href="/contact"
                 size="hero"
-                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+                icon={<ArrowUpRightIcon />}
               >
                 CONTACT US
               </EpaidButton>
@@ -92,7 +94,11 @@ export default function Hero() {
             variants={fadeUp}
             transition={{ duration: 0.7, ease: easeOut }}
           >
-            {HERO_DESCRIPTION}
+            {HERO_DESCRIPTION_LINES.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </motion.p>
         </motion.div>
       </div>

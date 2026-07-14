@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
-import { Button } from "@/components/ui/button";
+import { ctaBadgeClassName } from "../components/button-styles";
 import { formFieldBorderClassName, formFieldTextClassName } from "../components/form-styles";
 import { blogPosts } from "@/lib/blog-posts";
+import { cn } from "@/lib/utils";
 
 function ReadMoreButton({ href }: { href: string }) {
   return (
@@ -61,39 +62,48 @@ export default function BlogPosts() {
           </p>
         </div>
 
-        <div className="relative mx-auto mt-8 max-w-4xl sm:mt-10 lg:mt-14">
+        <div className="mx-auto mt-8 max-w-4xl sm:mt-10 lg:mt-14">
           <label htmlFor="blog-search" className="sr-only">
             Search blog posts
           </label>
-          <input
-            id="blog-search"
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="SEARCH HERE"
-            className={`min-h-12 w-full rounded-full bg-card py-3 pl-5 pr-14 text-base uppercase tracking-wide sm:min-h-[3.25rem] sm:py-4 sm:pl-8 sm:pr-20 sm:text-sm ${formFieldBorderClassName} ${formFieldTextClassName}`}
-          />
-          <Button
-            type="button"
-            variant="epaidOutline"
-            aria-label="Search"
-            className="absolute right-2 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full p-0 sm:right-3 sm:h-11 sm:w-11"
+          <div
+            className={cn(
+              "flex w-full items-center gap-2 rounded-full bg-card py-1.5 pl-5 pr-1.5 sm:gap-3 sm:py-2 sm:pl-8 sm:pr-1.5",
+              formFieldBorderClassName
+            )}
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-4 w-4 text-white"
-              fill="none"
-              aria-hidden="true"
+            <input
+              id="blog-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="SEARCH HERE"
+              className={cn(
+                "min-w-0 flex-1 border-0 bg-transparent py-1.5 text-base uppercase tracking-wide outline-none focus:ring-0 sm:text-sm",
+                formFieldTextClassName
+              )}
+            />
+            <button
+              type="button"
+              aria-label="Search"
+              className={cn(ctaBadgeClassName, "h-9 w-9 sm:h-10 sm:w-10")}
             >
-              <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-              <path
-                d="M16 16l4 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </Button>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4 text-current sm:h-5 sm:w-5"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
+                <path
+                  d="M16 16l4 4"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {filteredPosts.length === 0 ? (
@@ -105,7 +115,7 @@ export default function BlogPosts() {
             {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="flex min-w-0 flex-col overflow-hidden rounded-[16px] border border-border-soft bg-card p-3 sm:rounded-[20px] sm:p-4"
+                className="flex min-w-0 flex-col overflow-hidden rounded-[16px] border border-solid border-[#00000040] bg-card p-3 sm:rounded-[20px] sm:p-4"
               >
                 <div className="overflow-hidden rounded-[12px] sm:rounded-[16px]">
                   <Image

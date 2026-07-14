@@ -73,7 +73,7 @@ export default function BlogsHero() {
               <EpaidButton
                 href="#blog-posts"
                 size="hero"
-                icon={<ArrowUpRightIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+                icon={<ArrowUpRightIcon />}
               >
                 READ ARTICLES
               </EpaidButton>

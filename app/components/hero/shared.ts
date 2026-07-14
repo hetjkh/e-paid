@@ -22,11 +22,17 @@ export const heroHeadingClassName =
 export const heroHeadingNowrapLgClassName =
   `${heroHeadingClassName} lg:whitespace-nowrap`;
 
+export const HERO_DESCRIPTION_LINES = [
+  "We deliver smart digital solutions, secure payment systems",
+  "and expert advisory services that help businesses grow,",
+  "streamline operations, and scale confidently.",
+] as const;
+
 export const heroMobileDescClassName =
-  "w-full min-w-0 text-sm leading-relaxed text-black/90 dark:text-[#b8c9dc] sm:text-base lg:hidden";
+  "w-full min-w-0 text-xs leading-relaxed text-black/90 dark:text-[#b8c9dc] sm:text-sm lg:hidden";
 
 export const heroDesktopDescClassName =
-  "hidden min-w-0 max-w-[420px] text-base leading-relaxed text-black dark:text-[#b8c9dc] lg:block lg:pb-1 lg:text-lg";
+  "hidden min-w-0 max-w-[34rem] text-sm leading-relaxed text-black dark:text-[#b8c9dc] lg:block lg:pb-1 lg:text-base";
 
 export const heroCtaWrapClassName =
   "flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3";

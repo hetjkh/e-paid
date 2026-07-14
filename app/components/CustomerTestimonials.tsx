@@ -149,7 +149,7 @@ export default function CustomerTestimonials() {
                         whileInView="visible"
                         viewport={{ once: true, margin: "-60px" }}
                         transition={{ duration: 0.6, ease: easeOut }}
-                        className="flex min-h-[280px] flex-col rounded-[24px] border border-border-soft bg-card px-7 py-8 sm:min-h-[300px] lg:min-h-[320px] lg:px-9 lg:py-10"
+                        className="flex min-h-[280px] flex-col rounded-[24px] border border-solid border-[#00000040] bg-card px-7 py-8 sm:min-h-[300px] lg:min-h-[320px] lg:px-9 lg:py-10"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex items-center gap-3">

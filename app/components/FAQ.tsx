@@ -93,7 +93,7 @@ export default function FAQ() {
                 key={faq.question}
                 variants={fadeUp}
                 transition={{ duration: 0.55, ease: easeOut }}
-                className="overflow-hidden rounded-[20px] border border-border-soft bg-card-muted transition-all"
+                className="overflow-hidden rounded-[20px] border border-solid border-[#00000040] bg-card-muted transition-all"
               >
                 <button
                   type="button"

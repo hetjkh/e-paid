@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { cloneElement, isValidElement, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { heroBadgeClassName, outlineBadgeClassName } from "./button-styles";
+import { ctaBadgeClassName, ctaIconClassName } from "./button-styles";
 
 type EpaidButtonProps = {
   href?: string;
@@ -18,8 +18,6 @@ type EpaidButtonProps = {
   disabled?: boolean;
 };
 
-const navBadgeClassName = cn(outlineBadgeClassName, "h-7 w-7 sm:h-8 sm:w-8");
-
 export default function EpaidButton({
   href,
   className,
@@ -31,13 +29,20 @@ export default function EpaidButton({
   type = "button",
   disabled,
 }: EpaidButtonProps) {
-  const resolvedBadgeClassName =
-    badgeClassName ??
-    (size === "hero" ? heroBadgeClassName : navBadgeClassName);
+  const badge = icon ? (
+    <span className={badgeClassName ?? ctaBadgeClassName}>
+      {isValidElement<{ className?: string }>(icon)
+        ? cloneElement(icon, {
+            className: cn(ctaIconClassName, icon.props.className),
+          })
+        : icon}
+    </span>
+  ) : null;
+
   const content = (
     <>
       {children}
-      {icon ? <span className={resolvedBadgeClassName}>{icon}</span> : null}
+      {badge}
     </>
   );
 

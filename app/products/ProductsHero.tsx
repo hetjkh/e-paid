@@ -14,13 +14,11 @@ import {
   heroLeftColumnClassName,
   heroMobileDescClassName,
   heroTopGradientClassName,
+  HERO_DESCRIPTION_LINES,
   HERO_VIDEO_SRC,
 } from "../components/hero/shared";
 import { ProductsIcon } from "../components/ButtonIconBadge";
 import { easeOut, fadeUp } from "../components/motion/scroll-motion";
-
-const HERO_DESCRIPTION =
-  "We deliver smart digital solutions, secure payment systems, and expert advisory services that help businesses grow, streamline operations, and scale confidently.";
 
 export default function ProductsHero() {
   return (
@@ -61,7 +59,11 @@ export default function ProductsHero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              {HERO_DESCRIPTION}
+              {HERO_DESCRIPTION_LINES.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </motion.p>
 
             <motion.div
@@ -72,7 +74,7 @@ export default function ProductsHero() {
               <EpaidButton
                 href="#products"
                 size="hero"
-                icon={<ProductsIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+                icon={<ProductsIcon />}
               >
                 VIEW PRODUCTS
               </EpaidButton>
@@ -81,13 +83,17 @@ export default function ProductsHero() {
             <HeroSocialLinks className="lg:hidden" animateOnMount />
           </div>
 
-          <div className="hidden min-w-0 max-w-[420px] lg:block lg:pb-1">
+          <div className="hidden min-w-0 max-w-[34rem] lg:block lg:pb-1">
             <motion.p
-              className="text-base leading-relaxed text-black dark:text-[#b8c9dc] lg:text-lg"
+              className="text-sm leading-relaxed text-black dark:text-[#b8c9dc] lg:text-base"
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              {HERO_DESCRIPTION}
+              {HERO_DESCRIPTION_LINES.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </motion.p>
 
             <HeroSocialLinks className="mt-6" />

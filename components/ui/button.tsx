@@ -33,12 +33,13 @@ const buttonVariants = cva(
         xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
         lg: "h-9 gap-1.5 px-2.5 text-sm has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        nav: "gap-1.5 py-1 pl-3 pr-1 text-[13px] sm:gap-2 sm:py-1.5 sm:pl-4 sm:pr-1 sm:text-sm lg:pl-5 lg:pr-1.5 lg:text-base",
+        nav: "justify-between gap-2 py-2 pl-4 pr-1.5 text-[13px] sm:py-2 sm:pl-4 sm:pr-1.5 sm:text-sm lg:pl-5 lg:pr-1.5 lg:text-base",
         navPill:
           "h-8 min-w-8 px-3 text-[13px] sm:h-9 sm:min-w-9 sm:px-3.5 sm:text-sm",
         navRound: "size-8 p-0 sm:size-9",
-        hero: "w-full gap-1.5 py-2 pl-4 pr-1.5 text-[13px] sm:w-auto sm:justify-start sm:gap-2 sm:py-2.5 sm:pl-6 sm:pr-1.5 sm:text-sm lg:gap-2.5 lg:py-3 lg:pl-7 lg:pr-2 lg:text-base",
-        navStack: "w-full gap-2 py-3 pl-6 pr-3 text-sm",
+        hero: "w-full justify-between gap-2 py-2 pl-4 pr-1.5 text-[13px] sm:w-auto sm:py-2 sm:pl-4 sm:pr-1.5 sm:text-sm lg:pl-5 lg:pr-1.5 lg:text-base",
+        navStack:
+          "w-full justify-between gap-2 py-2 pl-4 pr-1.5 text-sm sm:py-2.5 sm:pl-5 sm:pr-1.5",
         icon: "size-8 rounded-lg",
         "icon-xs":
           "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",

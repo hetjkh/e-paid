@@ -115,7 +115,7 @@ export default function NavbarControls({
         size={navSize}
         className="relative z-10"
         onClick={onNavigate}
-        icon={<UserIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+        icon={<UserIcon />}
       >
         LOGIN
       </EpaidButton>
@@ -125,7 +125,7 @@ export default function NavbarControls({
         size={navSize}
         className="relative z-10"
         onClick={onNavigate}
-        icon={<OnboardingIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+        icon={<OnboardingIcon />}
       >
         ONBOARDING
       </EpaidButton>

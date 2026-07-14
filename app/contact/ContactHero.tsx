@@ -72,7 +72,7 @@ export default function ContactHero() {
               <EpaidButton
                 href="#contact-form"
                 size="hero"
-                icon={<ArrowUpRightIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+                icon={<ArrowUpRightIcon />}
               >
                 CONTACT US
               </EpaidButton>

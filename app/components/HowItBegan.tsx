@@ -118,7 +118,7 @@ function TimelineCard({
       transition={{ duration: 0.62, ease: easeOut, delay: animationDelay }}
       whileHover={cardHover}
       whileTap={{ scale: 0.98 }}
-      className={`w-full rounded-2xl border border-transparent bg-card shadow-[0_10px_38px_rgba(0,0,0,0.10)] transition-colors duration-300 hover:border-epaid/25 ${
+      className={`w-full rounded-2xl border border-solid border-[#00000040] bg-card shadow-[0_10px_38px_rgba(0,0,0,0.10)] transition-colors duration-300 hover:border-epaid/40 ${
         compact ? "p-2.5 sm:p-3" : "p-4 sm:p-5"
       }`}
     >
@@ -213,7 +213,7 @@ function TimelineDot({ animationDelay = 0 }: { animationDelay?: number }) {
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, ease: easeOut, delay: animationDelay }}
       whileHover={{ scale: 1.35, borderColor: "#0471ad" }}
-      className="h-3 w-3 shrink-0 rounded-full border-2 border-[#c4c4c4] bg-background dark:border-muted-foreground/40"
+      className="relative z-20 h-3 w-3 shrink-0 rounded-full border-2 border-black bg-background dark:border-white dark:bg-background"
     />
   );
 }
@@ -221,13 +221,9 @@ function TimelineDot({ animationDelay = 0 }: { animationDelay?: number }) {
 function MobileAlternatingTimeline({ events }: { events: TimelineEvent[] }) {
   return (
     <div className="relative lg:hidden">
-      <motion.div
-        className="pointer-events-none absolute bottom-4 left-1/2 top-4 z-0 w-px -translate-x-1/2 origin-top bg-[#d1d5db] dark:bg-border"
+      <div
+        className="pointer-events-none absolute bottom-4 left-1/2 top-4 z-0 w-px -translate-x-1/2 bg-black"
         aria-hidden="true"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 1.1, ease: easeOut }}
       />
 
       <div className="relative z-[1] flex flex-col gap-8">
@@ -299,7 +295,7 @@ function TimelineColumn({
   bottom?: TimelineEvent;
   columnIndex?: number;
 }) {
-  const connector = "h-6 w-px shrink-0 bg-[#d1d5db] dark:bg-border";
+  const connector = "h-6 w-px shrink-0 bg-black";
   const baseDelay = columnIndex * 0.1;
 
   return (
@@ -312,33 +308,17 @@ function TimelineColumn({
             animationDelay={baseDelay}
           />
         </div>
-        <motion.div
-          className={connector}
-          aria-hidden="true"
-          initial={{ scaleY: 0 }}
-          whileInView={{ scaleY: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, ease: easeOut, delay: baseDelay + 0.2 }}
-          style={{ originY: 0 }}
-        />
+        <div className={connector} aria-hidden="true" />
       </div>
 
-      <div className="relative z-10 flex items-center justify-center">
+      <div className="relative z-20 flex items-center justify-center">
         <TimelineDot animationDelay={baseDelay + 0.25} />
       </div>
 
       <div className="flex min-h-0 flex-col items-center lg:justify-start">
         {bottom ? (
           <>
-            <motion.div
-              className={connector}
-              aria-hidden="true"
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease: easeOut, delay: baseDelay + 0.3 }}
-              style={{ originY: 0 }}
-            />
+            <div className={connector} aria-hidden="true" />
             <div className="w-full max-w-[300px]">
               <TimelineCard
                 event={bottom}
@@ -348,15 +328,7 @@ function TimelineColumn({
             </div>
           </>
         ) : (
-          <motion.div
-            className={connector}
-            aria-hidden="true"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: easeOut, delay: baseDelay + 0.2 }}
-            style={{ originY: 0 }}
-          />
+          <div className={connector} aria-hidden="true" />
         )}
       </div>
     </div>
@@ -392,7 +364,7 @@ export default function HowItBegan() {
       />
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
-        <StaggerReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+        <StaggerReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <SectionTitleGlow className="pb-2 lg:pb-0">
             <AnimatedText
               text="HOW IT BEGAN"
@@ -401,12 +373,19 @@ export default function HowItBegan() {
             />
           </SectionTitleGlow>
           <motion.p
-            className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base lg:max-w-sm lg:text-lg"
+            className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base lg:max-w-sm lg:pb-1 lg:text-right lg:text-lg"
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
-            ePaid Company is a spind off ITS Saudi Computers Systems Co. W.L.L is a
-            Leading MSP, providing POS services since 1992 in the Kingdom.
+            <span className="block">
+              ePaid Company is a spind off ITS Saudi Computers
+            </span>
+            <span className="block">
+              Systems Co. W.L.L is a Leading MSP, providing
+            </span>
+            <span className="block">
+              POS services since 1992 in the Kingdom.
+            </span>
           </motion.p>
         </StaggerReveal>
 
@@ -414,16 +393,14 @@ export default function HowItBegan() {
           <MobileAlternatingTimeline events={timelineEvents} />
 
           <div className="relative hidden lg:block lg:min-h-[640px]">
-            <motion.div
-              className="pointer-events-none absolute inset-x-0 top-1/2 z-[1] h-px -translate-y-1/2 origin-left bg-[#d1d5db] dark:bg-border"
+            {/* Center spine behind dots */}
+            <div
+              className="pointer-events-none absolute inset-x-0 top-1/2 z-0 -translate-y-1/2"
               aria-hidden="true"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.2, ease: easeOut, delay: 0.1 }}
+              style={{ borderTop: "1px solid #000000" }}
             />
 
-            <div className="grid grid-cols-3 gap-5 xl:grid-cols-5">
+            <div className="relative z-10 grid grid-cols-3 gap-5 xl:grid-cols-5">
               {columns.map((column, columnIndex) => (
                 <TimelineColumn
                   key={column.top.year}

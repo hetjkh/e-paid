@@ -45,7 +45,7 @@ export default function HowWeDoIt() {
   return (
     <section className="section-tone relative overflow-x-clip bg-background pt-10 pb-24 lg:pt-32 lg:pb-32">
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
-        <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+        <StaggerReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <SectionTitleGlow>
             <AnimatedText
               text="HOW WE DO IT"
@@ -55,13 +55,19 @@ export default function HowWeDoIt() {
           </SectionTitleGlow>
 
           <motion.p
-            className="relative z-10 max-w-sm text-base leading-relaxed text-muted-foreground lg:pt-2 lg:text-lg"
+            className="relative z-10 max-w-xl text-base leading-relaxed text-muted-foreground lg:max-w-md lg:pb-1 lg:text-left lg:text-lg"
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
-            We follow a structured, collaborative approach to plan, build,
-            operate, and continuously improve digital solutions for long-term
-            business success.
+            <span className="block sm:whitespace-nowrap">
+              We follow a structured, collaborative approach to plan, build,
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              operate, and continuously improve digital solutions
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              for long-term business success.
+            </span>
           </motion.p>
         </StaggerReveal>
 
@@ -74,9 +80,9 @@ export default function HowWeDoIt() {
               key={step.title}
               variants={fadeUp}
               transition={{ duration: 0.6, ease: easeOut }}
-              className="relative flex flex-col rounded-[20px] border border-border-soft bg-card px-6 py-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:dark-card-shadow"
+              className="relative flex flex-col rounded-[20px] border border-solid border-[#00000040] bg-card px-6 py-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:dark-card-shadow"
             >
-              <div className="relative z-10 mb-6 flex justify-center">
+              <div className="relative z-10 mb-6 flex justify-start">
                 <Image
                   src={step.icon}
                   alt={step.alt}

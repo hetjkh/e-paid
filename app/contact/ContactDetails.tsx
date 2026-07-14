@@ -121,7 +121,7 @@ export default function ContactDetails() {
                   variants={scaleIn}
                   transition={{ duration: 0.55, ease: easeOut }}
                   whileHover={{ y: -4 }}
-                  className="group rounded-[20px] border border-border-soft bg-card p-5 transition-shadow duration-300 hover:border-epaid/30 hover:shadow-[0_12px_32px_rgba(4,113,173,0.12)] lg:p-6"
+                  className="group rounded-[20px] border border-solid border-[#00000040] bg-card p-5 transition-shadow duration-300 hover:border-epaid/30 hover:shadow-[0_12px_32px_rgba(4,113,173,0.12)] lg:p-6"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-epaid/10 text-epaid transition-colors duration-300 group-hover:bg-epaid group-hover:text-white">
                     {channel.icon}
@@ -159,7 +159,7 @@ export default function ContactDetails() {
             </StaggerReveal>
 
             <motion.div
-              className="rounded-[24px] border border-border-soft bg-card-muted px-6 py-7 lg:px-8 lg:py-8"
+              className="rounded-[24px] border border-solid border-[#00000040] bg-card-muted px-6 py-7 lg:px-8 lg:py-8"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -212,7 +212,7 @@ export default function ContactDetails() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: easeOut }}
           >
-            <div className="flex flex-1 flex-col overflow-hidden rounded-[24px] border border-border-soft bg-card shadow-[0_8px_32px_rgba(4,113,173,0.08)] dark:shadow-[0_8px_32px_rgba(4,113,173,0.15)]">
+            <div className="flex flex-1 flex-col overflow-hidden rounded-[24px] border border-solid border-[#00000040] bg-card shadow-[0_8px_32px_rgba(4,113,173,0.08)] dark:shadow-[0_8px_32px_rgba(4,113,173,0.15)]">
               <div className="border-b border-border-soft px-5 py-4 lg:px-6">
                 <p className="sf-pro-display-semibold text-xs font-semibold uppercase tracking-wide text-epaid">
                   Find us

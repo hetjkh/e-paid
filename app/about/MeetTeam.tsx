@@ -62,7 +62,7 @@ export default function MeetTeam() {
               variants={scaleIn}
               transition={{ duration: 0.6, ease: easeOut }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group mx-auto w-full max-w-[360px] cursor-default overflow-hidden rounded-[24px] border border-border-soft bg-card p-4 transition-shadow duration-300 hover:border-epaid/30 hover:shadow-[0_16px_40px_rgba(4,113,173,0.14)] sm:max-w-none lg:p-5"
+              className="group mx-auto w-full max-w-[360px] cursor-default overflow-hidden rounded-[24px] border border-solid border-[#00000040] bg-card p-4 transition-shadow duration-300 hover:border-epaid/30 hover:shadow-[0_16px_40px_rgba(4,113,173,0.14)] sm:max-w-none lg:p-5"
             >
               <div className="overflow-hidden rounded-[20px]">
                 <Image

@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </p>
           </div>
 
-          <aside className="rounded-[20px] border border-border-soft bg-card p-5">
+          <aside className="rounded-[20px] border border-solid border-[#00000040] bg-card p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-epaid">
               Highlights
             </p>
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </aside>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-[20px] border border-border-soft bg-card">
+        <div className="mt-8 overflow-hidden rounded-[20px] border border-solid border-[#00000040] bg-card">
           <Image
             src={post.image}
             alt={post.title}
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             ))}
           </article>
 
-          <aside className="rounded-[20px] border border-border-soft bg-card p-5">
+          <aside className="rounded-[20px] border border-solid border-[#00000040] bg-card p-5">
             <p className="text-xs font-bold uppercase tracking-wide text-epaid">
               Key takeaways
             </p>
@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <Link
                 key={related.id}
                 href={`/blogs/${related.id}`}
-                className="group overflow-hidden rounded-[18px] border border-border-soft bg-card p-3 transition-colors hover:border-epaid/30"
+                className="group overflow-hidden rounded-[18px] border border-solid border-[#00000040] bg-card p-3 transition-colors hover:border-epaid/30"
               >
                 <div className="overflow-hidden rounded-[14px]">
                   <Image

@@ -110,7 +110,7 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
             {Array.from({ length: showAll ? 6 : 3 }).map((_, i) => (
               <div
                 key={i}
-                className="h-[520px] animate-pulse rounded-[24px] border border-border-soft bg-card-muted"
+                className="h-[520px] animate-pulse rounded-[24px] border border-solid border-[#00000040] bg-card-muted"
               />
             ))}
           </div>
@@ -124,7 +124,7 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
               <motion.article
                 variants={scaleIn}
                 transition={{ duration: 0.6, ease: easeOut }}
-                className="flex h-full flex-col overflow-hidden rounded-[24px] border border-border-soft bg-card shadow-[0_4px_24px_rgba(0,0,0,0.07)] transition-shadow duration-300 group-hover:border-epaid/25 group-hover:shadow-[0_12px_36px_rgba(4,113,173,0.12)] dark:dark-card-shadow"
+                className="flex h-full flex-col overflow-hidden rounded-[24px] border border-solid border-[#00000040] bg-card shadow-[0_4px_24px_rgba(0,0,0,0.07)] transition-shadow duration-300 group-hover:border-epaid/25 group-hover:shadow-[0_12px_36px_rgba(4,113,173,0.12)] dark:dark-card-shadow"
               >
                 <div className="relative m-4 mb-0 overflow-hidden rounded-[20px] border border-border-soft">
                   <Image
@@ -154,16 +154,6 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                       delay={0.08}
                     />
                   </div>
-
-                  <motion.p
-                    className="mt-2 text-sm leading-snug text-muted-foreground"
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.5, ease: easeOut, delay: 0.1 }}
-                  >
-                    {product.description}
-                  </motion.p>
 
                   {product.tags.length > 0 ? (
                     <div className="mt-4 flex flex-wrap gap-2">

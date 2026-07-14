@@ -28,10 +28,16 @@ export const yellowButtonClassName = buttonVariants({
 export const outlineBadgeClassName =
   "outline-badge flex shrink-0 items-center justify-center rounded-full bg-black text-white transition-all duration-300";
 
-export const heroBadgeClassName = cn(
+/** Shared icon badge for navbar + hero CTAs */
+export const ctaBadgeClassName = cn(
   outlineBadgeClassName,
-  "h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10"
+  "h-7 w-7 sm:h-8 sm:w-8"
 );
+
+export const ctaIconClassName = "h-3 w-3 text-current sm:h-3.5 sm:w-3.5";
+
+/** @deprecated Use ctaBadgeClassName */
+export const heroBadgeClassName = ctaBadgeClassName;
 
 /** @deprecated Use outlineBadgeClassName for standard CTAs */
 export const iconBadgeClassName =

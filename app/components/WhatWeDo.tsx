@@ -32,12 +32,6 @@ const services = [
   },
 ];
 
-const highlights = [
-  { label: "POS devices & services" },
-  { label: "Spin-off from Saudi Computer Systems (ITS)" },
-  { label: "Trusted across Saudi Arabia" },
-];
-
 function ServiceIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5 text-epaid" fill="none" aria-hidden="true">
@@ -57,13 +51,13 @@ export default function WhatWeDo() {
       <div className="pointer-events-none absolute right-0 top-1/4 z-0 h-[300px] w-[300px] translate-x-1/4 blur-[90px] glow-blue lg:h-[380px] lg:w-[380px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
-        <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+        <StaggerReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
           <ScrollReveal>
             <SectionTitleGlow>
               <AnimatedText
                 text="About ePaid"
                 as="p"
-                className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-epaid sm:text-base lg:mb-5 lg:text-lg"
+                className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-epaid sm:text-base lg:mb-4 lg:text-lg"
               />
               <AnimatedText
                 text="WHAT WE DO"
@@ -74,36 +68,39 @@ export default function WhatWeDo() {
           </ScrollReveal>
 
           <motion.p
-            className="relative z-10 max-w-md text-base leading-relaxed text-muted-foreground lg:max-w-sm lg:pt-8 lg:text-lg"
+            className="relative z-10 max-w-xl text-base leading-relaxed text-muted-foreground lg:max-w-md lg:pb-1 lg:text-left lg:text-lg"
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
-            A spin-off from Saudi Computer Systems (ITS), delivering smart
-            digital, payment, and advisory solutions for modern enterprises.
+            <span className="block sm:whitespace-nowrap">
+              A spin-off from Saudi Computer Systems (ITS),
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              delivering smart digital, payment, and advisory
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              solutions for modern enterprises.
+            </span>
           </motion.p>
         </StaggerReveal>
 
         <div className="mt-12 grid grid-cols-1 items-start gap-5 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,520px)] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(0,580px)] xl:gap-20">
           <StaggerReveal className="flex flex-col gap-8">
             <motion.p
-              className="max-w-xl text-xl font-bold leading-snug text-foreground sm:text-2xl lg:text-[1.75rem] lg:leading-[1.4]"
+              className="max-w-xl text-base font-bold leading-snug text-foreground sm:text-lg lg:text-xl lg:leading-[1.45]"
               variants={fadeUp}
               transition={{ duration: 0.65, ease: easeOut }}
             >
-              We help businesses grow with secure payment systems, digital
-              platforms, and hands-on expert support.
+              <span className="block sm:whitespace-nowrap">
+                We help businesses grow with secure payment systems,
+              </span>
+              <span className="block sm:whitespace-nowrap">
+                digital platforms, and hands-on
+              </span>
+              <span className="block sm:whitespace-nowrap">
+                expert support.
+              </span>
             </motion.p>
-
-            <motion.div className="flex flex-wrap gap-2.5" variants={fadeUp}>
-              {highlights.map((item) => (
-                <span
-                  key={item.label}
-                  className="rounded-full border border-border-soft bg-card px-4 py-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:text-[13px]"
-                >
-                  {item.label}
-                </span>
-              ))}
-            </motion.div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-1">
               {services.map((service) => (
@@ -111,13 +108,13 @@ export default function WhatWeDo() {
                   key={service.title}
                   variants={fadeUp}
                   transition={{ duration: 0.6, ease: easeOut }}
-                  className="group flex gap-4 rounded-[20px] border border-border-soft bg-card px-5 py-5 transition-colors hover:border-epaid/40 dark:dark-card-shadow"
+                  className="group flex gap-4 rounded-[20px] border-2 border-border-soft bg-card px-5 py-5 transition-colors hover:border-epaid/40 dark:dark-card-shadow"
                 >
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-epaid/10">
                     <ServiceIcon />
                   </span>
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wide text-epaid sm:text-base">
+                    <h3 className="text-base font-bold uppercase tracking-wide text-epaid sm:text-lg lg:text-xl">
                       {service.title}
                     </h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-foreground dark:text-white sm:text-base">
@@ -132,8 +129,9 @@ export default function WhatWeDo() {
               <EpaidButton
                 href="/about"
                 size="hero"
-                className="w-auto"
-                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+                className="py-2.5 pl-6 pr-2 text-sm sm:py-3 sm:pl-7 sm:pr-2.5 sm:text-base lg:text-lg"
+                badgeClassName="outline-badge flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white transition-all duration-300 sm:h-9 sm:w-9"
+                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 text-current sm:h-4 sm:w-4" />}
               >
                 Know More
               </EpaidButton>
@@ -170,8 +168,9 @@ export default function WhatWeDo() {
               <EpaidButton
                 href="/about"
                 size="hero"
-                className="w-auto"
-                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />}
+                className="py-2.5 pl-6 pr-2 text-sm sm:py-3 sm:pl-7 sm:pr-2.5 sm:text-base lg:text-lg"
+                badgeClassName="outline-badge flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white transition-all duration-300 sm:h-9 sm:w-9"
+                icon={<ArrowUpRightIcon className="h-3.5 w-3.5 text-current sm:h-4 sm:w-4" />}
               >
                 Know More
               </EpaidButton>
