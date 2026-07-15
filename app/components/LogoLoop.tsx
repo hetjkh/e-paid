@@ -18,6 +18,8 @@ export type LogoItem =
       sizes?: string;
       width?: number;
       height?: number;
+      /** Relative to --logoloop-logoHeight (e.g. 0.4 for wide logos) */
+      scale?: number;
     };
 
 export interface LogoLoopProps {
@@ -379,13 +381,20 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         ) : (
           <img
             className={cx(
-              "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
+              item.scale
+                ? "w-auto block object-contain"
+                : "h-[var(--logoloop-logoHeight)] w-auto block object-contain",
               "[-webkit-user-drag:none] pointer-events-none",
               "[image-rendering:-webkit-optimize-contrast]",
               "motion-reduce:transition-none",
               scaleOnHover &&
                 "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
             )}
+            style={
+              item.scale
+                ? { height: `calc(var(--logoloop-logoHeight) * ${item.scale})` }
+                : undefined
+            }
             src={item.src}
             srcSet={item.srcSet}
             sizes={item.sizes}

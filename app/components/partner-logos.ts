@@ -10,6 +10,7 @@ export const partnerLogos: LogoItem[] = [
   { src: "/logos/8.png", alt: "neo leap" },
   { src: "/logos/9.png", alt: "stc" },
   { src: "/logos/10.png", alt: "Al Rajhi Bank" },
+  { src: "/logos/satocc.png", alt: "Satocci", scale: 0.4 },
 ];
 
 export const partnerLogoLoopProps = {
