@@ -37,7 +37,7 @@ const buttonVariants = cva(
         navPill:
           "h-8 min-w-8 px-3 text-[13px] sm:h-9 sm:min-w-9 sm:px-3.5 sm:text-sm",
         navRound: "size-8 p-0 sm:size-9",
-        hero: "w-full justify-between gap-2 py-2 pl-4 pr-1.5 text-[13px] sm:w-auto sm:py-2 sm:pl-4 sm:pr-1.5 sm:text-sm lg:pl-5 lg:pr-1.5 lg:text-base",
+        hero: "w-auto justify-between gap-2 py-2 pl-4 pr-1.5 text-[13px] sm:py-2 sm:pl-4 sm:pr-1.5 sm:text-sm lg:pl-5 lg:pr-1.5 lg:text-base",
         navStack:
           "w-full justify-between gap-2 py-2 pl-4 pr-1.5 text-sm sm:py-2.5 sm:pl-5 sm:pr-1.5",
         icon: "size-8 rounded-lg",

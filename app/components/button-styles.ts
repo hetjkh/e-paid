@@ -7,7 +7,7 @@ export const primaryButtonClassName = buttonVariants({
   size: "nav",
 });
 
-/** Hero row CTAs — full width on mobile, same pill padding as navbar. */
+/** Hero row CTAs — content-width pills, same padding as navbar. */
 export const heroButtonClassName = buttonVariants({
   variant: "epaidOutline",
   size: "hero",

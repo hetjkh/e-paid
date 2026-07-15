@@ -35,7 +35,7 @@ export const heroDesktopDescClassName =
   "hidden min-w-0 max-w-[34rem] text-sm leading-relaxed text-black dark:text-[#b8c9dc] lg:block lg:pb-1 lg:text-base";
 
 export const heroCtaWrapClassName =
-  "flex w-full flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3";
+  "flex w-full flex-row flex-wrap items-center gap-2 sm:gap-3";
 
 export const heroContainerVariants = {
   hidden: {},
