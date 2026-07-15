@@ -23,7 +23,7 @@ const selectClassName = `${formInputClassName} appearance-none`;
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="absolute -top-2.5 left-3 max-w-[calc(100%-1rem)] truncate bg-card px-1 text-[10px] text-muted-foreground sm:left-5 sm:max-w-none sm:text-xs">
+    <span className="pointer-events-none absolute -top-2.5 left-3 z-10 bg-card px-1 text-[10px] leading-none text-muted-foreground sm:left-5 sm:text-xs">
       {children}
     </span>
   );
@@ -406,9 +406,12 @@ export default function OnboardingForm() {
                   </div>
 
                   <div className="flex flex-col gap-4 min-[520px]:flex-row min-[520px]:items-start min-[520px]:gap-5">
-                    <label className="relative w-[7.25rem] shrink-0 sm:w-[7.75rem]">
+                    <label className="relative z-10 w-[7.25rem] shrink-0 overflow-visible sm:w-[7.75rem]">
                       <FieldLabel>Code</FieldLabel>
-                      <CountryCodeSelect defaultDialCode="+966" />
+                      <CountryCodeSelect
+                        defaultDialCode="+966"
+                        className="w-full"
+                      />
                     </label>
                     <TextField
                       label="Store Contact Number (mandatory)"

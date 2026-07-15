@@ -21,15 +21,16 @@ import {
 import { cn } from "@/lib/utils";
 
 const formRowTwoColClassName =
-  "grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
+  "grid grid-cols-1 gap-4 overflow-visible pt-3 min-[360px]:grid-cols-2 min-[360px]:gap-3 min-[480px]:gap-5";
 
-const formRowPhoneClassName = "flex items-start gap-3 min-[480px]:gap-5";
+const formRowPhoneClassName =
+  "flex items-start gap-3 overflow-visible pt-3 min-[480px]:gap-5";
 
 const inputClassName = formInputClassName;
 
 function FieldLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="absolute -top-2.5 left-3 max-w-[calc(100%-1rem)] truncate bg-card px-1 text-[10px] text-muted-foreground sm:left-5 sm:max-w-none sm:text-xs">
+    <span className="pointer-events-none absolute -top-2.5 left-3 z-10 bg-card px-1 text-[10px] leading-none text-muted-foreground sm:left-5 sm:text-xs">
       {children}
     </span>
   );
@@ -174,9 +175,12 @@ export default function ContactForm() {
                   variants={fadeUp}
                   transition={{ duration: 0.55, ease: easeOut }}
                 >
-                  <label className="relative w-[7.25rem] shrink-0 sm:w-[7.75rem]">
+                  <label className="relative z-10 w-[7.25rem] shrink-0 overflow-visible sm:w-[7.75rem]">
                     <FieldLabel>Code</FieldLabel>
-                    <CountryCodeSelect defaultDialCode="+966" />
+                    <CountryCodeSelect
+                      defaultDialCode="+966"
+                      className="w-full"
+                    />
                   </label>
                   <FormField
                     label="Phone (mandatory)"
@@ -189,6 +193,7 @@ export default function ContactForm() {
                 </motion.div>
 
                 <motion.div
+                  className="overflow-visible pt-3"
                   variants={fadeUp}
                   transition={{ duration: 0.55, ease: easeOut }}
                 >
@@ -241,12 +246,16 @@ export default function ContactForm() {
                   />
                 </motion.div>
 
-                <motion.div variants={fadeUp} transition={{ duration: 0.55, ease: easeOut }}>
+                <motion.div
+                  className="overflow-visible pt-3"
+                  variants={fadeUp}
+                  transition={{ duration: 0.55, ease: easeOut }}
+                >
                   <FormField label="Referral (Optional)" placeholder="Enter referral" />
                 </motion.div>
 
                 <motion.label
-                  className="relative block"
+                  className="relative block overflow-visible pt-3"
                   variants={fadeUp}
                   transition={{ duration: 0.55, ease: easeOut }}
                 >

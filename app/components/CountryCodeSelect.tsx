@@ -72,7 +72,7 @@ export default function CountryCodeSelect({
   };
 
   return (
-    <div ref={rootRef} className={cn("relative w-[7.25rem] shrink-0 sm:w-[7.75rem]", className)}>
+    <div ref={rootRef} className={cn("relative w-[7.25rem] shrink-0 overflow-visible sm:w-[7.75rem]", className)}>
       <button
         type="button"
         className={cn(
