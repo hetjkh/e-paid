@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -12,7 +11,8 @@ import {
   StaggerReveal,
 } from "./motion/scroll-motion";
 import SectionTitleGlow from "./SectionTitleGlow";
-import { secondaryButtonClassName } from "./button-styles";
+import EpaidButton from "./EpaidButton";
+import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import {
   fetchProductsClient,
   formatPrice,
@@ -120,11 +120,11 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
             stagger={0.1}
           >
             {products.map((product) => (
-              <Link key={product.id} href={`/products/${product.id}`} className="group block h-full">
               <motion.article
+                key={product.id}
                 variants={scaleIn}
                 transition={{ duration: 0.6, ease: easeOut }}
-                className="flex h-full flex-col overflow-hidden rounded-[24px] border border-solid border-[#00000040] bg-card shadow-[0_4px_24px_rgba(0,0,0,0.07)] transition-shadow duration-300 group-hover:border-epaid/25 group-hover:shadow-[0_12px_36px_rgba(4,113,173,0.12)] dark:dark-card-shadow"
+                className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-solid border-[#00000040] bg-card shadow-[0_4px_24px_rgba(0,0,0,0.07)] transition-shadow duration-300 hover:border-epaid/25 hover:shadow-[0_12px_36px_rgba(4,113,173,0.12)] dark:dark-card-shadow"
               >
                 <div className="relative m-4 mb-0 overflow-hidden rounded-[20px] border border-border-soft">
                   <Image
@@ -169,13 +169,15 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                   ) : null}
 
                   <div className="mt-auto pt-6">
-                    <span className={`${secondaryButtonClassName} block w-full justify-center text-center text-xs sm:text-sm`}>
-                      View details
-                    </span>
+                    <EpaidButton
+                      href={`/products/${product.id}`}
+                      icon={<ArrowUpRightIcon />}
+                    >
+                      VIEW DETAILS
+                    </EpaidButton>
                   </div>
                 </div>
               </motion.article>
-              </Link>
             ))}
           </StaggerReveal>
         )}
