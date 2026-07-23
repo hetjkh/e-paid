@@ -17,7 +17,7 @@ import {
   HERO_DESCRIPTION_LINES,
   HERO_VIDEO_SRC,
 } from "../components/hero/shared";
-import { ProductsIcon } from "../components/ButtonIconBadge";
+import { ArrowUpRightIcon, ProductsIcon } from "../components/ButtonIconBadge";
 import { easeOut, fadeUp } from "../components/motion/scroll-motion";
 
 export default function ProductsHero() {
@@ -76,7 +76,14 @@ export default function ProductsHero() {
                 size="hero"
                 icon={<ProductsIcon />}
               >
-                VIEW PRODUCTS
+                VIEW HARDWARE
+              </EpaidButton>
+              <EpaidButton
+                href="/products/software"
+                size="hero"
+                icon={<ArrowUpRightIcon />}
+              >
+                VIEW SOFTWARE
               </EpaidButton>
             </motion.div>
 

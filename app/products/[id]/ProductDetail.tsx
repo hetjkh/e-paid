@@ -120,10 +120,10 @@ export default function ProductDetail({ product }: { product: Product }) {
 
       <section className="mx-auto max-w-[1400px] px-6 py-8 lg:px-10 lg:py-12">
         <Link
-          href="/products"
+          href="/products/hardware"
           className="mb-8 inline-flex text-sm font-semibold text-epaid transition-colors hover:underline"
         >
-          ← Back to products
+          ← Back to hardware
         </Link>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">

@@ -47,6 +47,23 @@ export default function EpaidButton({
   );
 
   if (href) {
+    const isExternal = /^https?:\/\//i.test(href);
+
+    if (isExternal) {
+      return (
+        <Button variant="epaidOutline" size={size} className={className} asChild>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClick}
+          >
+            {content}
+          </a>
+        </Button>
+      );
+    }
+
     return (
       <Button variant="epaidOutline" size={size} className={className} asChild>
         <Link href={href} onClick={onClick}>

@@ -6,6 +6,7 @@ import { useState } from "react";
 import EpaidButton from "../components/EpaidButton";
 import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import { newsletterInputClassName } from "../components/form-styles";
+import { epaidSocialLinks, SocialIcon } from "./social-links";
 
 const landingLinks = [
   { label: "Home", href: "/" },
@@ -18,37 +19,6 @@ const landingLinks = [
 const legalLinks = [
   { label: "Retailer T&Cs", href: "#" },
   { label: "Privacy", href: "#" },
-];
-
-const socialLinks = [
-  {
-    label: "Facebook",
-    href: "https://facebook.com",
-    icon: (
-      <path d="M14 3.5h-3a3.5 3.5 0 0 0-3.5 3.5V10H5v3.5h2.5V21h3.5v-7.5H14l.5-3.5h-3V7a1 1 0 0 1 1-1h2V3.5z" />
-    ),
-  },
-  {
-    label: "X",
-    href: "https://twitter.com",
-    icon: (
-      <path d="M16.5 4.5L9.2 12.8 4.5 19.5h2.2l5.3-6.9 4.3 6.9h5.5l-7.7-8.8 6.2-8h-2.2l-4.8 6.2-3.9-6.2H4.5l7 8z" />
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com",
-    icon: (
-      <path d="M6.5 9.5h3v10.5h-3V9.5zm1.5-4.5a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5zM11 9.5h2.9v1.4h.05c.4-.75 1.4-1.55 2.9-1.55 3.1 0 3.65 2 3.65 4.65v5.5H17.5v-4.9c0-1.15-.02-2.65-1.6-2.65-1.65 0-1.9 1.25-1.9 2.55v4.95h-3V9.5z" />
-    ),
-  },
-  {
-    label: "YouTube",
-    href: "https://youtube.com",
-    icon: (
-      <path d="M10 8.5v7l6-3.5-6-3.5zm8.2-4.8a2 2 0 0 1 1.4 1.4c.3 1.1.3 3.4.3 3.4s0 2.3-.3 3.4a2 2 0 0 1-1.4 1.4C17.3 13 12 13 12 13s-5.3 0-6.5-.1a2 2 0 0 1-1.4-1.4C4.2 10.4 4.2 8.1 4.2 8.1s0-2.3.3-3.4a2 2 0 0 1 1.4-1.4C6.7 3.2 12 3.2 12 3.2s5.3 0 6.5.1z" />
-    ),
-  },
 ];
 
 export default function Footer() {
@@ -137,7 +107,7 @@ export default function Footer() {
               </Link>
 
               <div className="flex items-center gap-3">
-                {socialLinks.map((social) => (
+                {epaidSocialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
@@ -146,14 +116,7 @@ export default function Footer() {
                     aria-label={social.label}
                     className="flex h-9 w-9 items-center justify-center rounded-full text-white/90 transition-colors hover:text-epaid-yellow"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="h-4 w-4"
-                      aria-hidden="true"
-                    >
-                      {social.icon}
-                    </svg>
+                    <SocialIcon path={social.path} />
                   </a>
                 ))}
               </div>

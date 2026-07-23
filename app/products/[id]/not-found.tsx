@@ -8,7 +8,7 @@ export default function ProductNotFound() {
         This product may have been removed or the link is incorrect.
       </p>
       <EpaidButton
-        href="/products"
+        href="/products/hardware"
         className="mt-8 px-8 py-3 text-sm normal-case"
       >
         Browse products
