@@ -2,6 +2,11 @@
 
 import { motion } from "framer-motion";
 import {
+  OFFICE_ADDRESS,
+  OFFICE_MAP_EMBED_URL,
+  OFFICE_MAP_LINK,
+} from "@/lib/office-address";
+import {
   AnimatedLines,
   AnimatedText,
   easeOut,
@@ -9,12 +14,6 @@ import {
   scaleIn,
   StaggerReveal,
 } from "../components/motion/scroll-motion";
-
-const MAP_EMBED_URL =
-  "https://maps.google.com/maps?q=King+Fahd+Road,+Olaya+District,+Riyadh,+Saudi+Arabia&hl=en&z=15&output=embed";
-
-const MAP_LINK =
-  "https://www.google.com/maps/search/?api=1&query=King+Fahd+Road,+Olaya+District,+Riyadh,+Saudi+Arabia";
 
 const contactChannels = [
   {
@@ -46,9 +45,9 @@ const contactChannels = [
   },
   {
     title: "Head Office",
-    value: "Riyadh, Saudi Arabia",
-    detail: "King Fahd Road, Olaya District",
-    href: MAP_LINK,
+    value: OFFICE_ADDRESS.line3,
+    detail: `${OFFICE_ADDRESS.line1}, ${OFFICE_ADDRESS.line2}`,
+    href: OFFICE_MAP_LINK,
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
         <path
@@ -218,15 +217,20 @@ export default function ContactDetails() {
                   Find us
                 </p>
                 <p className="sf-pro-display-semibold mt-1 text-base font-semibold text-foreground">
-                  King Fahd Road, Olaya District
+                  {OFFICE_ADDRESS.line1}
                 </p>
-                <p className="sf-pro-display-medium text-sm font-medium text-muted-foreground">Riyadh, Saudi Arabia</p>
+                <p className="sf-pro-display-medium text-sm font-medium text-muted-foreground">
+                  {OFFICE_ADDRESS.line2}
+                </p>
+                <p className="sf-pro-display-medium text-sm font-medium text-muted-foreground">
+                  {OFFICE_ADDRESS.line3}
+                </p>
               </div>
 
               <div className="relative min-h-[280px] flex-1 bg-card-muted lg:min-h-[380px]">
                 <iframe
                   title="ePaid head office location on Google Maps"
-                  src={MAP_EMBED_URL}
+                  src={OFFICE_MAP_EMBED_URL}
                   className="absolute inset-0 h-full w-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -236,7 +240,7 @@ export default function ContactDetails() {
 
               <div className="border-t border-border-soft px-5 py-4 lg:px-6">
                 <a
-                  href={MAP_LINK}
+                  href={OFFICE_MAP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="sf-pro-display-semibold inline-flex items-center gap-2 text-sm font-semibold text-epaid transition-colors hover:text-epaid-dark"

@@ -9,51 +9,17 @@ import {
   StaggerReveal,
 } from "./motion/scroll-motion";
 import SectionTitleGlow from "./SectionTitleGlow";
-
-const faqs = [
-  {
-    question: "HOW DO I USE EPAID TO SCAN AND PAY FOR ITEMS IN-STORE?",
-    answer: [
-      "With ePaid, paying for your shopping is instantaneous — no waiting in lines or fumbling with cash. The moment you check out in the app, your payment is processed and a digital receipt is issued instantly, securely stored in your account.",
-      "Unlike traditional paper receipts that fade, tear, or get lost, your Satocci receipts are always safe, accessible, and trackable. Need to share one? Do it in a single tap — no more awkwardly photographing long, oddly sized receipts that never fit properly in the camera frame.",
-      "With Satocci, you enjoy a frictionless, eco-friendly, and clutter-free shopping experience, where your payments are faster and your receipts never disappear.",
-    ],
-  },
-  {
-    question:
-      "HOW DOES PAYMENT WORK — WHICH PAYMENT METHODS ARE SUPPORTED?",
-    answer: [
-      "ePaid supports a wide range of secure payment methods including credit and debit cards, NFC contactless payments, magstripe and chip cards, as well as QR code payments.",
-      "All transactions are processed through encrypted channels, ensuring your payment data remains protected at every step of the checkout process.",
-    ],
-  },
-  {
-    question:
-      "WHEN I PAY WITH EPAID, HOW DO I SHOW PROOF OF PURCHASE IF ASKED BY STORE STAFF?",
-    answer: [
-      "Every ePaid transaction generates a digital receipt stored directly in your app. Simply open the receipt from your transaction history and show it to store staff if requested.",
-      "Each receipt includes a unique transaction ID, timestamp, and item details, providing full proof of purchase without needing a paper copy.",
-    ],
-  },
-  {
-    question: "IS MY PAYMENT INFORMATION SECURE IN THE SATOCCI APP?",
-    answer: [
-      "Yes. ePaid uses industry-standard encryption and tokenization to protect your payment information. Your card details are never stored on your device or shared with merchants.",
-      "All transactions comply with PCI DSS security standards, and multi-factor authentication adds an extra layer of protection to your account.",
-    ],
-  },
-  {
-    question:
-      "CAN I STILL COLLECT LOYALTY POINTS, COUPONS, OR DISCOUNTS WHEN USING EPAID?",
-    answer: [
-      "Absolutely. ePaid integrates with store loyalty programs, allowing you to earn and redeem points, apply coupons, and access member discounts seamlessly at checkout.",
-      "Simply link your loyalty account in the app settings, and your rewards will be automatically applied to every eligible purchase.",
-    ],
-  },
-];
+import { DEFAULT_CMS } from "@/lib/cms";
+import { useCmsBlock } from "@/lib/use-cms-block";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
+  const faqContent = useCmsBlock("faq.items", DEFAULT_CMS["faq.items"]);
+  const faqIntro = useCmsBlock("home.faqIntro", DEFAULT_CMS["home.faqIntro"]);
+  const faqs =
+    faqContent.items?.length > 0
+      ? faqContent.items
+      : DEFAULT_CMS["faq.items"].items;
 
   const toggle = (index: number) => {
     setOpenIndex((current) => (current === index ? -1 : index));
@@ -67,7 +33,7 @@ export default function FAQ() {
         <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
           <SectionTitleGlow>
             <AnimatedLines
-              lines={["FREQUENTLY ASKED", "QUESTIONS"]}
+              lines={[faqIntro.titleLine1, faqIntro.titleLine2]}
               as="h2"
               className="sf-pro-display-semibold text-3xl font-semibold uppercase leading-tight text-epaid sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]"
             />
@@ -78,9 +44,7 @@ export default function FAQ() {
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
-            Got questions? We&apos;ve got answers. Explore the most common
-            queries about Satocci, how it works, and how it makes your
-            shopping experience easier.
+            {faqIntro.intro}
           </motion.p>
         </StaggerReveal>
 
@@ -90,7 +54,7 @@ export default function FAQ() {
 
             return (
               <motion.div
-                key={faq.question}
+                key={`${faq.question}-${index}`}
                 variants={fadeUp}
                 transition={{ duration: 0.55, ease: easeOut }}
                 className="overflow-hidden rounded-[20px] border border-solid border-[#00000040] bg-card-muted transition-all"

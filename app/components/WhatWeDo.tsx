@@ -13,24 +13,8 @@ import {
   StaggerReveal,
 } from "./motion/scroll-motion";
 import SectionTitleGlow from "./SectionTitleGlow";
-
-const services = [
-  {
-    title: "Digital Solutions",
-    description:
-      "Modern platforms and software built to streamline operations and scale with your business.",
-  },
-  {
-    title: "Payment Solutions",
-    description:
-      "Secure POS devices, terminals, and payment infrastructure for reliable in-store checkout.",
-  },
-  {
-    title: "Advisory Services",
-    description:
-      "Expert guidance to help merchants adopt the right technology and grow with confidence.",
-  },
-];
+import { DEFAULT_CMS } from "@/lib/cms";
+import { useCmsBlock } from "@/lib/use-cms-block";
 
 function ServiceIcon() {
   return (
@@ -46,6 +30,12 @@ function ServiceIcon() {
 }
 
 export default function WhatWeDo() {
+  const content = useCmsBlock("home.whatWeDo", DEFAULT_CMS["home.whatWeDo"]);
+  const services =
+    content.services?.length > 0
+      ? content.services
+      : DEFAULT_CMS["home.whatWeDo"].services;
+
   return (
     <section id="about" className="relative overflow-x-clip bg-background pt-12 pb-8 lg:pt-16 lg:pb-28">
       <div className="pointer-events-none absolute right-0 top-1/4 z-0 h-[300px] w-[300px] translate-x-1/4 blur-[90px] glow-blue lg:h-[380px] lg:w-[380px]" />
@@ -55,12 +45,12 @@ export default function WhatWeDo() {
           <ScrollReveal>
             <SectionTitleGlow>
               <AnimatedText
-                text="About ePaid"
+                text={content.eyebrow}
                 as="p"
                 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-epaid sm:text-base lg:mb-4 lg:text-lg"
               />
               <AnimatedText
-                text="WHAT WE DO"
+                text={content.title}
                 as="h2"
                 className="sf-pro-display-semibold text-4xl font-semibold uppercase leading-none tracking-normal text-epaid sm:text-5xl lg:text-[3.5rem]"
               />
@@ -72,15 +62,11 @@ export default function WhatWeDo() {
             variants={fadeUp}
             transition={{ duration: 0.65, ease: easeOut }}
           >
-            <span className="block sm:whitespace-nowrap">
-              A spin-off from Saudi Computer Systems (ITS),
-            </span>
-            <span className="block sm:whitespace-nowrap">
-              delivering smart digital, payment, and advisory
-            </span>
-            <span className="block sm:whitespace-nowrap">
-              solutions for modern enterprises.
-            </span>
+            {content.blurbLines.map((line) => (
+              <span key={line} className="block sm:whitespace-nowrap">
+                {line}
+              </span>
+            ))}
           </motion.p>
         </StaggerReveal>
 
@@ -91,15 +77,11 @@ export default function WhatWeDo() {
               variants={fadeUp}
               transition={{ duration: 0.65, ease: easeOut }}
             >
-              <span className="block sm:whitespace-nowrap">
-                We help businesses grow with secure payment systems,
-              </span>
-              <span className="block sm:whitespace-nowrap">
-                digital platforms, and hands-on
-              </span>
-              <span className="block sm:whitespace-nowrap">
-                expert support.
-              </span>
+              {content.highlightLines.map((line) => (
+                <span key={line} className="block sm:whitespace-nowrap">
+                  {line}
+                </span>
+              ))}
             </motion.p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-1">
@@ -127,13 +109,13 @@ export default function WhatWeDo() {
 
             <motion.div className="hidden pt-2 lg:block" variants={fadeUp}>
               <EpaidButton
-                href="/about"
+                href={content.knowMoreHref || "/about"}
                 size="hero"
                 className="py-2.5 pl-6 pr-2 text-sm sm:py-3 sm:pl-7 sm:pr-2.5 sm:text-base lg:text-lg"
                 badgeClassName="outline-badge flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white transition-all duration-300 sm:h-9 sm:w-9"
                 icon={<ArrowUpRightIcon className="h-3.5 w-3.5 text-current sm:h-4 sm:w-4" />}
               >
-                Know More
+                {content.knowMoreLabel || "Know More"}
               </EpaidButton>
             </motion.div>
           </StaggerReveal>
@@ -166,13 +148,13 @@ export default function WhatWeDo() {
               transition={{ duration: 0.55, ease: easeOut }}
             >
               <EpaidButton
-                href="/about"
+                href={content.knowMoreHref || "/about"}
                 size="hero"
                 className="py-2.5 pl-6 pr-2 text-sm sm:py-3 sm:pl-7 sm:pr-2.5 sm:text-base lg:text-lg"
                 badgeClassName="outline-badge flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black text-white transition-all duration-300 sm:h-9 sm:w-9"
                 icon={<ArrowUpRightIcon className="h-3.5 w-3.5 text-current sm:h-4 sm:w-4" />}
               >
-                Know More
+                {content.knowMoreLabel || "Know More"}
               </EpaidButton>
             </motion.div>
           </div>

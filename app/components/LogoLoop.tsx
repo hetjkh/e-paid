@@ -20,6 +20,8 @@ export type LogoItem =
       height?: number;
       /** Relative to --logoloop-logoHeight (e.g. 0.4 for wide logos) */
       scale?: number;
+      /** Nudge logo vertically (CSS length, e.g. "-6px" or "-8%") */
+      offsetY?: string;
     };
 
 export interface LogoLoopProps {
@@ -391,8 +393,17 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                 "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120"
             )}
             style={
-              item.scale
-                ? { height: `calc(var(--logoloop-logoHeight) * ${item.scale})` }
+              item.scale || item.offsetY
+                ? {
+                    ...(item.scale
+                      ? {
+                          height: `calc(var(--logoloop-logoHeight) * ${item.scale})`,
+                        }
+                      : {}),
+                    ...(item.offsetY
+                      ? { transform: `translateY(${item.offsetY})` }
+                      : {}),
+                  }
                 : undefined
             }
             src={item.src}
@@ -435,6 +446,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
           <li
             className={cx(
               "flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]",
+              "flex items-center",
               isVertical ? "mb-[var(--logoloop-gap)]" : "mr-[var(--logoloop-gap)]",
               scaleOnHover && "overflow-visible group/item"
             )}

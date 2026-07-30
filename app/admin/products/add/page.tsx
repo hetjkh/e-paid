@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { getStoredToken } from "@/lib/admin-api";
 import { createProduct, normalizePriceInput } from "@/lib/products-api";
+import AdminCmsShell from "@/app/admin/content/AdminCmsShell";
 import EpaidButton from "@/app/components/EpaidButton";
 
 type SpecRow = { label: string; value: string };
@@ -140,25 +139,12 @@ export default function AddProductPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <header className="border-b border-border-soft bg-card">
-        <div className="mx-auto flex max-w-[900px] items-center justify-between px-6 py-4">
-          <Link href="/admin/dashboard" className="text-sm font-medium text-epaid hover:underline">
-            ← Dashboard
-          </Link>
-          <Image src="/Group.png" alt="ePAiD" width={100} height={30} className="h-8 w-auto" />
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-[900px] px-6 py-10">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-epaid">Products</p>
-        <h1 className="mt-2 text-3xl font-bold text-foreground">Add Product</h1>
-        <p className="mt-2 text-muted-foreground">
-          Upload images to Cloudinary and save product details to MongoDB.
-        </p>
-
-        <form onSubmit={handleSubmit} className="mt-8 space-y-8">
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+    <AdminCmsShell
+      title="Add product"
+      description="Upload images and save product details to your catalog."
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <h2 className="text-lg font-bold text-foreground">Basic info</h2>
             <div className="mt-5 space-y-4">
               <div>
@@ -210,7 +196,7 @@ export default function AddProductPage() {
             </div>
           </section>
 
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <h2 className="text-lg font-bold text-foreground">Images</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               1 main image + up to 4 gallery views
@@ -259,7 +245,7 @@ export default function AddProductPage() {
             </div>
           </section>
 
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-lg font-bold text-foreground">Specifications</h2>
               <button
@@ -316,7 +302,6 @@ export default function AddProductPage() {
             {loading ? "Uploading…" : "Save product"}
           </EpaidButton>
         </form>
-      </div>
-    </main>
+    </AdminCmsShell>
   );
 }

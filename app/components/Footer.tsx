@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { OFFICE_ADDRESS } from "@/lib/office-address";
 import EpaidButton from "../components/EpaidButton";
 import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import { newsletterInputClassName } from "../components/form-styles";
@@ -166,9 +167,11 @@ export default function Footer() {
                 <p>
                   <span className="font-semibold text-white">Address:</span>
                   <br />
-                  King Fahd Road, Olaya District
+                  {OFFICE_ADDRESS.line1}
                   <br />
-                  Riyadh, Saudi Arabia
+                  {OFFICE_ADDRESS.line2}
+                  <br />
+                  {OFFICE_ADDRESS.line3}
                 </p>
                 <p>
                   <a

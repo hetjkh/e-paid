@@ -19,8 +19,16 @@ import {
   HERO_VIDEO_SRC,
 } from "../components/hero/shared";
 import { easeOut, fadeUp } from "../components/motion/scroll-motion";
+import { DEFAULT_CMS } from "@/lib/cms";
+import { useCmsBlock } from "@/lib/use-cms-block";
 
 export default function AboutHero() {
+  const hero = useCmsBlock("about.hero", DEFAULT_CMS["about.hero"]);
+  const descriptionLines =
+    hero.descriptionLines?.length > 0
+      ? hero.descriptionLines
+      : [...HERO_DESCRIPTION_LINES];
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background">
       <video
@@ -51,7 +59,7 @@ export default function AboutHero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              More Than POS Systems
+              {hero.title}
             </motion.h1>
 
             <motion.p
@@ -59,7 +67,7 @@ export default function AboutHero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              {HERO_DESCRIPTION_LINES.map((line) => (
+              {descriptionLines.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
@@ -72,11 +80,11 @@ export default function AboutHero() {
               transition={{ duration: 0.65, ease: easeOut }}
             >
               <EpaidButton
-                href="#contact"
+                href={hero.ctaHref || "#contact"}
                 size="hero"
                 icon={<ArrowUpRightIcon />}
               >
-                CONTACT US
+                {hero.ctaLabel || "CONTACT US"}
               </EpaidButton>
             </motion.div>
           </div>
@@ -86,7 +94,7 @@ export default function AboutHero() {
             variants={fadeUp}
             transition={{ duration: 0.7, ease: easeOut }}
           >
-            {HERO_DESCRIPTION_LINES.map((line) => (
+            {descriptionLines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>

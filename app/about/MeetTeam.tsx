@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   AnimatedText,
@@ -9,26 +10,19 @@ import {
   scaleIn,
   StaggerReveal,
 } from "../components/motion/scroll-motion";
-
-const team = [
-  {
-    name: "Chittullintavida Muneer",
-    role: "Treasury & Budgeting",
-    image: "/1.png",
-  },
-  {
-    name: "Al Sadek kamal",
-    role: "Operation Manager",
-    image: "/2.png",
-  },
-  {
-    name: "Nouf Alrbaia",
-    role: "Marketing and PR manager",
-    image: "/3.png",
-  },
-];
+import {
+  FALLBACK_TEAM_MEMBERS,
+  fetchTeamMembersClient,
+  type TeamMember,
+} from "@/lib/team-api";
 
 export default function MeetTeam() {
+  const [team, setTeam] = useState<TeamMember[]>(FALLBACK_TEAM_MEMBERS);
+
+  useEffect(() => {
+    fetchTeamMembersClient().then(setTeam);
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-background py-8 lg:pb-12 lg:pt-10">
       <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 rounded-full bg-[#0471AD]/8 blur-3xl" />
@@ -58,7 +52,7 @@ export default function MeetTeam() {
         >
           {team.map((member) => (
             <motion.article
-              key={member.name}
+              key={member._id}
               variants={scaleIn}
               transition={{ duration: 0.6, ease: easeOut }}
               whileHover={{ y: -8, scale: 1.02 }}
@@ -66,7 +60,7 @@ export default function MeetTeam() {
             >
               <div className="overflow-hidden rounded-[20px]">
                 <Image
-                  src={member.image}
+                  src={member.image.url}
                   alt={member.name}
                   width={380}
                   height={380}

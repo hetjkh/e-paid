@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { getStoredToken } from "@/lib/admin-api";
@@ -12,6 +10,7 @@ import {
   updateProduct,
   type ProductImage,
 } from "@/lib/products-api";
+import AdminCmsShell from "@/app/admin/content/AdminCmsShell";
 import EpaidButton from "@/app/components/EpaidButton";
 
 type SpecRow = { label: string; value: string };
@@ -191,32 +190,19 @@ export default function EditProductPage() {
 
   if (loadingProduct) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-background">
+      <AdminCmsShell title="Edit product" description="Loading product…">
         <p className="text-muted-foreground">Loading product…</p>
-      </main>
+      </AdminCmsShell>
     );
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <header className="border-b border-border-soft bg-card">
-        <div className="mx-auto flex max-w-[900px] items-center justify-between px-6 py-4">
-          <Link href="/admin/products" className="text-sm font-medium text-epaid hover:underline">
-            ← Products
-          </Link>
-          <Image src="/Group.png" alt="ePAiD" width={100} height={30} className="h-8 w-auto" />
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-[900px] px-6 py-10">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-epaid">Products</p>
-        <h1 className="mt-2 text-3xl font-bold text-foreground">Edit Product</h1>
-        <p className="mt-2 text-muted-foreground">
-          Update details and images. Leave images unchanged or upload replacements.
-        </p>
-
-        <form onSubmit={handleSubmit} className="mt-8 space-y-8">
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+    <AdminCmsShell
+      title="Edit product"
+      description="Update details and images. Leave images unchanged or upload replacements."
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <h2 className="text-lg font-bold text-foreground">Basic info</h2>
             <div className="mt-5 space-y-4">
               <div>
@@ -265,7 +251,7 @@ export default function EditProductPage() {
             </div>
           </section>
 
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <h2 className="text-lg font-bold text-foreground">Images</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Upload a new file to replace an image, or remove existing gallery images
@@ -342,7 +328,7 @@ export default function EditProductPage() {
             </div>
           </section>
 
-          <section className="rounded-[24px] border border-border-soft bg-card p-6 lg:p-8">
+          <section className="rounded-2xl border border-solid border-[#00000040] bg-card p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-8">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-lg font-bold text-foreground">Specifications</h2>
               <button
@@ -407,7 +393,6 @@ export default function EditProductPage() {
             </EpaidButton>
           </div>
         </form>
-      </div>
-    </main>
+    </AdminCmsShell>
   );
 }

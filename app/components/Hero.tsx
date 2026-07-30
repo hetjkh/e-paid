@@ -19,8 +19,16 @@ import {
   HERO_VIDEO_SRC,
 } from "./hero/shared";
 import { easeOut, fadeUp } from "./motion/scroll-motion";
+import { DEFAULT_CMS } from "@/lib/cms";
+import { useCmsBlock } from "@/lib/use-cms-block";
 
 export default function Hero() {
+  const hero = useCmsBlock("home.hero", DEFAULT_CMS["home.hero"]);
+  const descriptionLines =
+    hero.descriptionLines?.length > 0
+      ? hero.descriptionLines
+      : [...HERO_DESCRIPTION_LINES];
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background">
       <video
@@ -51,8 +59,8 @@ export default function Hero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              <span className="block">MSP POS service</span>
-              <span className="block">provider company</span>
+              <span className="block">{hero.titleLine1}</span>
+              <span className="block">{hero.titleLine2}</span>
             </motion.h1>
 
             <motion.p
@@ -60,7 +68,7 @@ export default function Hero() {
               variants={fadeUp}
               transition={{ duration: 0.7, ease: easeOut }}
             >
-              {HERO_DESCRIPTION_LINES.map((line) => (
+              {descriptionLines.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
@@ -73,18 +81,18 @@ export default function Hero() {
               transition={{ duration: 0.65, ease: easeOut }}
             >
               <EpaidButton
-                href="/products/hardware"
+                href={hero.ctaPrimaryHref || "/products/hardware"}
                 size="hero"
                 icon={<ProductsIcon />}
               >
-                VIEW PRODUCTS
+                {hero.ctaPrimaryLabel || "VIEW PRODUCTS"}
               </EpaidButton>
               <EpaidButton
-                href="/contact"
+                href={hero.ctaSecondaryHref || "/contact"}
                 size="hero"
                 icon={<ArrowUpRightIcon />}
               >
-                CONTACT US
+                {hero.ctaSecondaryLabel || "CONTACT US"}
               </EpaidButton>
             </motion.div>
           </div>
@@ -94,7 +102,7 @@ export default function Hero() {
             variants={fadeUp}
             transition={{ duration: 0.7, ease: easeOut }}
           >
-            {HERO_DESCRIPTION_LINES.map((line) => (
+            {descriptionLines.map((line) => (
               <span key={line} className="block">
                 {line}
               </span>

@@ -7,8 +7,15 @@ import {
   fadeUp,
   StaggerReveal,
 } from "../components/motion/scroll-motion";
+import { DEFAULT_CMS } from "@/lib/cms";
+import { useCmsBlock } from "@/lib/use-cms-block";
 
 export default function AboutMissionVision() {
+  const content = useCmsBlock(
+    "about.missionVision",
+    DEFAULT_CMS["about.missionVision"]
+  );
+
   return (
     <section className="relative overflow-hidden bg-background py-10 lg:py-14">
       <div className="pointer-events-none absolute left-0 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#0471AD]/8 blur-3xl" />
@@ -26,7 +33,7 @@ export default function AboutMissionVision() {
                 aria-hidden="true"
               />
               <AnimatedText
-                text="Our Mission"
+                text={content.missionLabel}
                 as="h2"
                 className="core-values-heading relative text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
               />
@@ -41,7 +48,7 @@ export default function AboutMissionVision() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease: easeOut, delay: 0.1 }}
             >
-              Empower every merchant to grow with confidence.
+              {content.missionHeadline}
             </motion.p>
 
             <motion.p
@@ -51,9 +58,7 @@ export default function AboutMissionVision() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: easeOut, delay: 0.18 }}
             >
-              We deliver secure, reliable POS and payment solutions that simplify
-              daily operations, reduce friction at checkout, and help businesses
-              across Saudi Arabia scale without compromise.
+              {content.missionBody}
             </motion.p>
           </motion.div>
 
@@ -63,7 +68,7 @@ export default function AboutMissionVision() {
             transition={{ duration: 0.65, ease: easeOut, delay: 0.08 }}
           >
             <AnimatedText
-              text="Our Vision"
+              text={content.visionLabel}
               as="h2"
               className="core-values-heading text-[2.125rem] font-semibold uppercase leading-none tracking-normal text-epaid sm:text-4xl lg:text-[2.75rem]"
             />
@@ -77,7 +82,7 @@ export default function AboutMissionVision() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease: easeOut, delay: 0.15 }}
             >
-              Lead cashless retail transformation across the region.
+              {content.visionHeadline}
             </motion.p>
 
             <motion.p
@@ -87,9 +92,7 @@ export default function AboutMissionVision() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, ease: easeOut, delay: 0.22 }}
             >
-              To become the most trusted MSP POS partner — combining deep
-              technical expertise, nationwide support, and innovative fintech to
-              shape the future of in-store commerce.
+              {content.visionBody}
             </motion.p>
           </motion.div>
         </StaggerReveal>

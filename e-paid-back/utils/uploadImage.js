@@ -1,10 +1,10 @@
 const cloudinary = require("../config/cloudinary");
 
-async function uploadImageBuffer(buffer, mimetype) {
+async function uploadImageBuffer(buffer, mimetype, folder = "epaid/products") {
   const dataUri = `data:${mimetype};base64,${buffer.toString("base64")}`;
 
   const result = await cloudinary.uploader.upload(dataUri, {
-    folder: "epaid/products",
+    folder,
     resource_type: "image",
   });
 

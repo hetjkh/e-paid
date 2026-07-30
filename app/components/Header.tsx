@@ -6,10 +6,24 @@ import { useEffect, useState } from "react";
 import NavbarControls from "./NavbarControls";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
+type NavChild = { label: string; href: string };
+type NavLink = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+};
+
+const navLinks: NavLink[] = [
   { label: "HOME", href: "/" },
   { label: "ABOUT", href: "/about" },
-  { label: "PRODUCTS", href: "/products/hardware" },
+  {
+    label: "PRODUCTS",
+    href: "/products/hardware",
+    children: [
+      { label: "Hardware", href: "/products/hardware" },
+      { label: "Software", href: "/products/software" },
+    ],
+  },
   { label: "BLOGS", href: "/blogs" },
   { label: "CONTACT US", href: "/contact" },
   { label: "PARTNERSHIPS", href: "/partnerships" },
@@ -49,6 +63,7 @@ export default function Header({ variant = "hero" }: HeaderProps) {
   const isPage = variant === "page";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -64,7 +79,10 @@ export default function Header({ variant = "hero" }: HeaderProps) {
     if (!menuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setProductsOpen(false);
+      }
     };
 
     document.body.style.overflow = "hidden";
@@ -74,6 +92,10 @@ export default function Header({ variant = "hero" }: HeaderProps) {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) setProductsOpen(false);
   }, [menuOpen]);
 
   const isSolid = scrolled || menuOpen;
@@ -93,7 +115,10 @@ export default function Header({ variant = "hero" }: HeaderProps) {
           )
     );
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setProductsOpen(false);
+  };
 
   return (
     <>
@@ -120,13 +145,84 @@ export default function Header({ variant = "hero" }: HeaderProps) {
 
           <nav className="hidden min-w-0 flex-1 px-2 lg:block xl:px-4">
             <ul className="flex min-w-0 items-center justify-center gap-3 xl:gap-5 2xl:gap-7">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className={linkClassName()}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) =>
+                link.children ? (
+                  <li
+                    key={link.label}
+                    className="group relative"
+                    onMouseEnter={() => setProductsOpen(true)}
+                    onMouseLeave={() => setProductsOpen(false)}
+                    onBlur={(event) => {
+                      if (
+                        !event.currentTarget.contains(
+                          event.relatedTarget as Node | null
+                        )
+                      ) {
+                        setProductsOpen(false);
+                      }
+                    }}
+                  >
+                    <button
+                      type="button"
+                      className={cn(
+                        linkClassName(),
+                        "inline-flex items-center gap-1.5"
+                      )}
+                      aria-expanded={productsOpen}
+                      aria-haspopup="true"
+                      onClick={() => setProductsOpen((open) => !open)}
+                      onFocus={() => setProductsOpen(true)}
+                    >
+                      {link.label}
+                      <svg
+                        viewBox="0 0 12 8"
+                        className={cn(
+                          "h-2.5 w-2.5 transition-transform duration-200",
+                          productsOpen && "rotate-180"
+                        )}
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M1 1.5L6 6.5L11 1.5"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+
+                    <div
+                      className={cn(
+                        "invisible absolute left-1/2 top-full z-50 w-44 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150",
+                        "group-hover:visible group-hover:opacity-100",
+                        productsOpen && "visible opacity-100"
+                      )}
+                    >
+                      <ul className="overflow-hidden rounded-2xl border border-solid border-[#00000040] bg-card py-2 shadow-[0_12px_32px_rgba(0,0,0,0.12)] dark:border-white/20 dark:shadow-[0_12px_32px_rgba(0,0,0,0.45)]">
+                        {link.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              className="block px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-epaid/10 hover:text-epaid"
+                              onClick={() => setProductsOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ) : (
+                  <li key={link.label}>
+                    <Link href={link.href} className={linkClassName()}>
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </nav>
 
@@ -182,17 +278,65 @@ export default function Header({ variant = "hero" }: HeaderProps) {
 
             <nav className="flex-1 overflow-y-auto px-5 py-6">
               <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={linkClassName(true)}
-                      onClick={closeMenu}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {navLinks.map((link) =>
+                  link.children ? (
+                    <li key={link.label}>
+                      <button
+                        type="button"
+                        className={cn(
+                          linkClassName(true),
+                          "flex items-center justify-between"
+                        )}
+                        aria-expanded={productsOpen}
+                        onClick={() => setProductsOpen((open) => !open)}
+                      >
+                        {link.label}
+                        <svg
+                          viewBox="0 0 12 8"
+                          className={cn(
+                            "h-3 w-3 transition-transform duration-200",
+                            productsOpen && "rotate-180"
+                          )}
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M1 1.5L6 6.5L11 1.5"
+                            stroke="currentColor"
+                            strokeWidth="1.75"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      {productsOpen ? (
+                        <ul className="mb-1 ml-3 mt-1 space-y-1 border-l border-border-soft pl-3">
+                          {link.children.map((child) => (
+                            <li key={child.href}>
+                              <Link
+                                href={child.href}
+                                className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-foreground hover:bg-epaid/10 hover:text-epaid"
+                                onClick={closeMenu}
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </li>
+                  ) : (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className={linkClassName(true)}
+                        onClick={closeMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </nav>
 
