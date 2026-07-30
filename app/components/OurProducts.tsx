@@ -15,7 +15,6 @@ import EpaidButton from "./EpaidButton";
 import { ArrowUpRightIcon } from "./ButtonIconBadge";
 import {
   fetchProductsClient,
-  formatPrice,
   specToTag,
   type Product,
 } from "@/lib/products-api";
@@ -24,7 +23,6 @@ import { getAllFallbackProducts } from "@/lib/fallback-products";
 type DisplayProduct = {
   id: string;
   name: string;
-  price: string;
   description: string;
   tags: string[];
   image: string;
@@ -34,7 +32,6 @@ function mapApiProduct(product: Product): DisplayProduct {
   return {
     id: product._id,
     name: product.title,
-    price: formatPrice(product.price),
     description: product.description,
     image: product.mainImage.url,
     tags: product.specifications.map(specToTag),
@@ -141,19 +138,11 @@ export default function OurProducts({ showAll = false }: { showAll?: boolean }) 
                 </div>
 
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <AnimatedText
-                      text={product.name}
-                      as="h3"
-                      className="min-w-0 flex-1 text-2xl font-bold text-foreground"
-                    />
-                    <AnimatedText
-                      text={product.price}
-                      as="span"
-                      className="shrink-0 whitespace-nowrap text-2xl font-bold text-epaid"
-                      delay={0.08}
-                    />
-                  </div>
+                  <AnimatedText
+                    text={product.name}
+                    as="h3"
+                    className="text-2xl font-bold text-foreground"
+                  />
 
                   {product.tags.length > 0 ? (
                     <div className="mt-4 flex flex-wrap gap-2">
